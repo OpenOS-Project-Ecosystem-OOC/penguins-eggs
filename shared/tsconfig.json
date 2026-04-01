@@ -6,8 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "noEmit": true,
-    "skipLibCheck": true,
-    "types": ["node"]
+    "skipLibCheck": true
   },
   "include": [
     "android-shared.ts",

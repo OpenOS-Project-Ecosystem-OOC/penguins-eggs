@@ -389,7 +389,7 @@ Upstream repos: https://github.com/lxc/distrobuilder and https://github.com/itof
 
 ---
 
-### incus-image-server
+### penguins-incus-platform
 
 **Purpose:** Unified simplestreams image server for LXC/LXD/Incus. The serving
 layer for images produced by `penguins-distrobuilder`. Enables `eggs produce
@@ -398,7 +398,7 @@ layer for images produced by `penguins-distrobuilder`. Enables `eggs produce
 **Internal layout:**
 
 ```
-incus-image-server/unified-image-server/
+penguins-incus-platform/unified-image-server/
 ├── server/            # Elixir/Phoenix simplestreams server (upmaru/polar base)
 ├── manifests/         # distrobuilder YAMLs for all supported distros
 ├── chromiumos-stage3/ # parameterized ChromiumOS stage3 builder
@@ -460,8 +460,8 @@ INCUS_SERVER_TOKEN=<publish-session-token>
 INCUS_SERVER_PRODUCT=<product-id>
 ```
 
-Source: [`incus-image-server/`](incus-image-server/) — Elixir + Shell + TypeScript.
-Upstream: https://github.com/Interested-Deving-1896/incus-image-server
+Source: [`penguins-incus-platform/`](penguins-incus-platform/) — Elixir + Shell + TypeScript.
+Upstream: https://github.com/Interested-Deving-1896/penguins-incus-platform
 
 ---
 

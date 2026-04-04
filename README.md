@@ -349,14 +349,14 @@ DISTROBUILDER_OUTPUT=/var/lib/eggs/distrobuilder
 
 Source: [`integrations/penguins-distrobuilder/`](integrations/penguins-distrobuilder/) and https://github.com/Interested-Deving-1896/penguins-distrobuilder
 
-## incus-image-server
+## penguins-incus-platform
 
 Unified simplestreams image server for LXC/LXD/Incus. The natural companion
-to `penguins-distrobuilder`: distrobuilder produces the images, incus-image-server
+to `penguins-distrobuilder`: distrobuilder produces the images, penguins-incus-platform
 serves them so any Incus/LXD client can pull them with `incus image copy`.
 
 ```bash
-# Build image AND publish to your incus-image-server in one command
+# Build image AND publish to your penguins-incus-platform in one command
 sudo eggs produce --publish-incus \
   --publish-incus-url=https://images.example.com \
   --publish-incus-token=<token> \
@@ -379,7 +379,7 @@ INCUS_SERVER_TOKEN=<token>
 INCUS_SERVER_PRODUCT=<product-id>
 ```
 
-Source: [`integrations/incus-image-server/`](integrations/incus-image-server/) and https://github.com/Interested-Deving-1896/incus-image-server
+Source: [`integrations/penguins-incus-platform/`](integrations/penguins-incus-platform/) and [github.com/Interested-Deving-1896/penguins-incus-platform](https://github.com/Interested-Deving-1896/penguins-incus-platform)
 
 ## Plugin dispatch
 

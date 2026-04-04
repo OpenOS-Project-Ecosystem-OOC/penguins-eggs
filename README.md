@@ -33,6 +33,7 @@ intelligence that is now indispensable.
 * [Penguins Ecosystem](#penguins-ecosystem)
 * [Supported Distributions](#supported-distributions)
 * [Links & Documentation](#links--documentation)
+  * [ChromiumOS](#chromiumos)
 * [Commands](#commands)
 * [GUI](#gui)
 * [Book](#book)
@@ -427,6 +428,15 @@ manager and repository lists.
   [Download Examples](https://sourceforge.net/projects/penguins-eggs/files/ISOS/)
 - **User Guide:**
   [Wardrobe User Guide](https://penguins-eggs.net/docs/Tutorial/wardrobe-users-guide)
+
+## ChromiumOS
+
+- **Reference Guide (Markdown):**
+  [docs/chromiumos/README.md](docs/chromiumos/README.md) — all 18 directories and 49 files covering ChromiumOS support, grouped by category (configuration, integrations, packaging, source, docs)
+- **Reference Guide (PDF):**
+  [docs/chromiumos/README.pdf](docs/chromiumos/README.pdf)
+- **Supported derivatives:** ChromiumOS, ChromeOS, FydeOS/openFyde, ThoriumOS, WayneOS, Brunch
+- **Supported architectures:** amd64, arm64, i386, riscv64
 
 # Commands
 

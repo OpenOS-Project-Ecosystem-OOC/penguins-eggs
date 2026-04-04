@@ -20,12 +20,12 @@ Full companion repos merged as subtrees with hooks into `eggs produce`.
 | eggs-gui | [`eggs-gui/`](eggs-gui/) | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web |
 | eggs-ai | [`eggs-ai/`](eggs-ai/) | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API, 7 LLM providers |
 | penguins-distrobuilder | [`penguins-distrobuilder/`](penguins-distrobuilder/) | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) |
-| incus-image-server | [`incus-image-server/`](incus-image-server/) | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 |
+| penguins-incus-platform | [`penguins-incus-platform/`](penguins-incus-platform/) | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 |
 | penguins-incus-hub | [`penguins-incus-hub/`](penguins-incus-hub/) | Shell | Integration layer for penguins-incus-platform: embeds PIP daemon + CLI into ISOs; snapshots Incus guests on reset |
 
 ### Ecosystem hook events
 
-| Event | penguins-recovery | penguins-powerwash | PIF | PKM | eggs-audit | penguins-distrobuilder | incus-image-server | penguins-incus-hub |
+| Event | penguins-recovery | penguins-powerwash | PIF | PKM | eggs-audit | penguins-distrobuilder | penguins-incus-platform | penguins-incus-hub |
 |---|---|---|---|---|---|---|---|---|
 | `eggs produce` | embeds eggs-plugin hook | embeds binary + GRUB entry | embeds PIF state | embeds kernel list | generates SBOM + attestation | optionally builds LXC/Incus image | optionally publishes image via `--publish-incus` | embeds PIP daemon + CLI + profiles + systemd unit |
 | pre-reset | creates snapshot | calls `eggs produce --naked` | exits mutable mode | snapshots kernel state | — | snapshots rootfs via `distrobuilder pack` | — | snapshots all running Incus containers + VMs |

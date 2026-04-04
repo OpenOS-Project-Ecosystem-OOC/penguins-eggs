@@ -212,7 +212,7 @@ Config: `/etc/penguins-distrobuilder/eggs-hooks.conf`
 Always-on: set `DISTROBUILDER_ENABLED=1` in config
 Upstream: https://github.com/lxc/distrobuilder + https://github.com/itoffshore/distrobuilder-menu
 
-### incus-image-server (`integrations/incus-image-server/`)
+### penguins-incus-platform (`integrations/penguins-incus-platform/`)
 Simplestreams image server for LXC/LXD/Incus. Serving layer for images
 produced by penguins-distrobuilder. Enables `eggs produce --publish-incus`
 to build and publish in one command.
@@ -242,7 +242,7 @@ eggs produce
         ├── PKM                    → embed kernel list
         ├── penguins-eggs-audit    → SBOM + attestation + license scan
         ├── penguins-distrobuilder → optional LXC/Incus image build
-        └── incus-image-server     → optional publish via --publish-incus
+        └── penguins-incus-platform     → optional publish via --publish-incus
 ```
 
 See `integrations/ARCHITECTURE.md` for the full integration map.

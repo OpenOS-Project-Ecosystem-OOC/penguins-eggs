@@ -43,7 +43,7 @@ export default class Produce extends Command {
     'sudo eggs produce --distrobuilder       # export to Incus/LXC image via distrobuilder (default: incus)',
     'sudo eggs produce --distrobuilder --distrobuilder-type=lxc   # export as LXC image',
     'sudo eggs produce --distrobuilder --distrobuilder-type=both  # export both Incus and LXC images',
-    'sudo eggs produce --publish-incus --publish-incus-url=https://images.example.com --publish-incus-token=<token> --publish-incus-product=<id>  # build + publish to incus-image-server',
+    'sudo eggs produce --publish-incus --publish-incus-url=https://images.example.com --publish-incus-token=<token> --publish-incus-product=<id>  # build + publish to penguins-incus-platform',
     'sudo eggs produce --audit                          # full audit: SBOM + license scan + attestation + hardening',
     'sudo eggs produce --audit --audit-vouch-key=~/.vouch/key.pem  # audit with cryptographic attestation',
     'sudo eggs produce --audit --audit-hardening        # audit + apply OS hardening to the chroot',
@@ -79,10 +79,10 @@ export default class Produce extends Command {
     distrobuilder: Flags.boolean({ description: 'export the produced system to an Incus/LXC container image via distrobuilder' }),
     'distrobuilder-type': Flags.string({ description: 'distrobuilder image type: incus, lxc, or both (default: incus)', options: ['incus', 'lxc', 'both'] }),
     'distrobuilder-output': Flags.string({ description: 'output directory for distrobuilder images (default: /var/lib/eggs/distrobuilder)' }),
-    'publish-incus': Flags.boolean({ description: 'publish the distrobuilder image to an incus-image-server (implies --distrobuilder)' }),
-    'publish-incus-url': Flags.string({ description: 'incus-image-server base URL (e.g. https://images.example.com)' }),
-    'publish-incus-token': Flags.string({ description: 'incus-image-server publish session token' }),
-    'publish-incus-product': Flags.string({ description: 'incus-image-server product ID to publish under' }),
+    'publish-incus': Flags.boolean({ description: 'publish the distrobuilder image to an penguins-incus-platform (implies --distrobuilder)' }),
+    'publish-incus-url': Flags.string({ description: 'penguins-incus-platform base URL (e.g. https://images.example.com)' }),
+    'publish-incus-token': Flags.string({ description: 'penguins-incus-platform publish session token' }),
+    'publish-incus-product': Flags.string({ description: 'penguins-incus-platform product ID to publish under' }),
     audit: Flags.boolean({ description: 'run full audit pipeline: SBOM generation (syft), license scan (grant), attestation (vouch), optional hardening' }),
     'audit-format': Flags.string({ description: 'SBOM format: spdx-json, cyclonedx-json, syft-json, spdx-tag-value (default: spdx-json)', options: ['spdx-json', 'cyclonedx-json', 'syft-json', 'spdx-tag-value'] }),
     'audit-output': Flags.string({ description: 'output directory for audit artefacts (default: /var/lib/eggs/audit)' }),
@@ -390,7 +390,7 @@ export default class Produce extends Command {
   }
 
   /**
-   * Publish a distrobuilder-produced image to an incus-image-server instance.
+   * Publish a distrobuilder-produced image to an penguins-incus-platform instance.
    *
    * Uses the direct-upload workflow:
    *   POST /publish/sessions                          → get/validate token
@@ -435,7 +435,7 @@ export default class Produce extends Command {
     const base = serverUrl.replace(/\/$/, '')
     const headers = { Authorization: `Bearer ${token}`, Accept: 'application/json' }
 
-    Utils.warning(`Publishing to incus-image-server: ${base}`)
+    Utils.warning(`Publishing to penguins-incus-platform: ${base}`)
 
     // Locate image files produced by distrobuilder
     const metadataFile = path.join(outputDir, 'incus.tar.xz')
@@ -470,7 +470,7 @@ export default class Produce extends Command {
         })
 
       // 1. Create a new version under the product
-      if (verbose) console.log(`[incus-image-server] Creating version for product ${productId}`)
+      if (verbose) console.log(`[penguins-incus-platform] Creating version for product ${productId}`)
       const serial = new Date().toISOString().slice(0, 16).replace(/[-T:]/g, '')
       const versionRes = await request(
         'POST',
@@ -482,7 +482,7 @@ export default class Produce extends Command {
       }
       const versionId = JSON.parse(versionRes.body)?.data?.id
       if (!versionId) throw new Error(`No version ID in response: ${versionRes.body}`)
-      if (verbose) console.log(`[incus-image-server] Version created: ${versionId}`)
+      if (verbose) console.log(`[penguins-incus-platform] Version created: ${versionId}`)
 
       // 2. Upload via multipart — delegate to curl for reliable multipart handling
       const { spawnSync } = await import('node:child_process')
@@ -502,7 +502,7 @@ export default class Produce extends Command {
         Utils.warning(`No rootfs.tar.xz or disk.qcow2 found in ${outputDir}. Uploading metadata only.`)
       }
 
-      if (verbose) console.log(`[incus-image-server] Uploading to ${uploadUrl}`)
+      if (verbose) console.log(`[penguins-incus-platform] Uploading to ${uploadUrl}`)
       const uploadResult = spawnSync('curl', curlArgs, { stdio: verbose ? 'inherit' : 'pipe' })
 
       if (uploadResult.status !== 0) {
@@ -510,11 +510,11 @@ export default class Produce extends Command {
         throw new Error(`Upload failed (curl exit ${uploadResult.status})${stderr ? ': ' + stderr : ''}`)
       }
 
-      console.log(chalk.green(`incus-image-server: image published to ${base} (product=${productId} version=${versionId})`))
+      console.log(chalk.green(`penguins-incus-platform: image published to ${base} (product=${productId} version=${versionId})`))
       console.log(chalk.green(`Clients can pull with: incus image copy images:${productId} local:`))
 
     } catch (err: any) {
-      console.log(chalk.red(`incus-image-server publish failed: ${err.message}`))
+      console.log(chalk.red(`penguins-incus-platform publish failed: ${err.message}`))
       console.log(chalk.yellow(`Check server URL, token, and product ID. Server docs: ${serverUrl}/publish`))
     }
   }
@@ -916,7 +916,7 @@ export default class Produce extends Command {
           )
         }
 
-        // Publish distrobuilder image to incus-image-server
+        // Publish distrobuilder image to penguins-incus-platform
         if (flags['publish-incus'] && !scriptOnly) {
           await this.publishToIncusImageServer(
             flags['distrobuilder-output'] ?? '/var/lib/eggs/distrobuilder',

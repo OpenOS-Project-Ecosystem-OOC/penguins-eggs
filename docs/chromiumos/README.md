@@ -14,7 +14,7 @@ reproducible across amd64, arm64, i386, and riscv64.
 - [File Reference](#file-reference)
   - [Configuration](#configuration)
   - [Integrations — Stage3 Builder](#integrations--stage3-builder)
-  - [Integrations — Incus Image Server](#integrations--incus-image-server)
+  - [Integrations — penguins-incus-platform](#integrations--penguins-incus-platform)
   - [Packaging — Portage Overlay](#packaging--portage-overlay)
   - [Source — Package Manager](#source--package-manager)
   - [Source — Image Production](#source--image-production)
@@ -81,9 +81,9 @@ Defined in [`conf/derivatives_chromiumos.yaml`]({{REPO_BLOB}}/conf/derivatives_c
 
 | Directory | Purpose |
 |---|---|
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3`]({{REPO_TREE}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3) | Stage3 tarball builder root |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/.github/workflows`]({{REPO_TREE}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/.github/workflows) | CI workflows — builds stage3 tarballs on schedule |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards`]({{REPO_TREE}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards) | Per-board build configs (reven, arm64-generic, rpi4, rpi5, rk3588…) |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3`]({{REPO_TREE}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3) | Stage3 tarball builder root |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/.github/workflows`]({{REPO_TREE}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/.github/workflows) | CI workflows — builds stage3 tarballs on schedule |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards`]({{REPO_TREE}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards) | Per-board build configs (reven, arm64-generic, rpi4, rpi5, rk3588…) |
 
 ### Packaging
 
@@ -126,25 +126,25 @@ containers. These containers include a full Portage tree and toolchain, enabling
 
 | File | Category | Purpose |
 |---|---|---|
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/README.md`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/README.md) | Integration — Docs | Board table, usage examples, requirements, overlay sources per board. |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/build.sh`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/build.sh) | Integration — Builder | Main stage3 build script. Accepts `--board`, `--jobs`, `--output`. Produces `chromiumos-stage3-<board>-<release>.tar.xz`. |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/.github/workflows/build.yml`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/.github/workflows/build.yml) | Integration — CI | GitHub Actions workflow. Builds `reven` (amd64) and `arm64-generic` tarballs on a weekly schedule and on push. |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards/arm64-generic.conf`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards/arm64-generic.conf) | Integration — Board Config | Board config for generic arm64 (VMware/QEMU). Sets `ARCH`, `CHOST`, `BOOTSTRAP_URL`, openFyde overlay source. |
-| [`integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards/reven.conf`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/chromiumos-stage3/boards/reven.conf) | Integration — Board Config | Board config for generic amd64 (`reven`). Uses upstream ChromiumOS overlay from `chromium.googlesource.com`. |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/README.md`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/README.md) | Integration — Docs | Board table, usage examples, requirements, overlay sources per board. |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/build.sh`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/build.sh) | Integration — Builder | Main stage3 build script. Accepts `--board`, `--jobs`, `--output`. Produces `chromiumos-stage3-<board>-<release>.tar.xz`. |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/.github/workflows/build.yml`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/.github/workflows/build.yml) | Integration — CI | GitHub Actions workflow. Builds `reven` (amd64) and `arm64-generic` tarballs on a weekly schedule and on push. |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards/arm64-generic.conf`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards/arm64-generic.conf) | Integration — Board Config | Board config for generic arm64 (VMware/QEMU). Sets `ARCH`, `CHOST`, `BOOTSTRAP_URL`, openFyde overlay source. |
+| [`integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards/reven.conf`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3/boards/reven.conf) | Integration — Board Config | Board config for generic amd64 (`reven`). Uses upstream ChromiumOS overlay from `chromium.googlesource.com`. |
 
 ---
 
-### Integrations — Incus Image Server
+### Integrations — penguins-incus-platform
 
 | File | Category | Purpose |
 |---|---|---|
-| [`integrations/incus-image-server/unified-image-server/README.md`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/README.md) | Integration — Docs | Overview of the unified image server, including ChromiumOS image types. |
-| [`integrations/incus-image-server/unified-image-server/manifests/README.md`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/manifests/README.md) | Integration — Docs | Manifest format docs, including ChromiumOS image manifest structure. |
-| [`integrations/incus-image-server/unified-image-server/manifests/bin/build-chromiumos-image.sh`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/manifests/bin/build-chromiumos-image.sh) | Integration — Builder | Downloads a pre-built stage3 tarball and repackages it as an Incus-compatible image (`rootfs.tar.xz` + `metadata.tar.xz`). |
-| [`integrations/incus-image-server/unified-image-server/penguins-eggs/README.md`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/penguins-eggs/README.md) | Integration — Docs | How penguins-eggs runs inside the unified image server, including ChromiumOS specifics. |
-| [`integrations/incus-image-server/unified-image-server/penguins-eggs/conf/derivatives_chromiumos.yaml`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/penguins-eggs/conf/derivatives_chromiumos.yaml) | Integration — Config | Mirror of `conf/derivatives_chromiumos.yaml` for use inside the image server container. |
-| [`integrations/incus-image-server/unified-image-server/penguins-eggs/conf/flavours/chromiumos.yaml`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/penguins-eggs/conf/flavours/chromiumos.yaml) | Integration — Config | Mirror of `conf/flavours/chromiumos.yaml` for use inside the image server container. |
-| [`integrations/incus-image-server/unified-image-server/penguins-eggs/src/classes/pacman.d/chromiumos.ts`]({{REPO_BLOB}}/integrations/incus-image-server/unified-image-server/penguins-eggs/src/classes/pacman.d/chromiumos.ts) | Integration — Source | Mirror of `src/classes/pacman.d/chromiumos.ts` bundled inside the image server container. |
+| [`integrations/penguins-incus-platform/unified-image-server/README.md`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/README.md) | Integration — Docs | Overview of the unified image server, including ChromiumOS image types. |
+| [`integrations/penguins-incus-platform/unified-image-server/manifests/README.md`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/manifests/README.md) | Integration — Docs | Manifest format docs, including ChromiumOS image manifest structure. |
+| [`integrations/penguins-incus-platform/unified-image-server/manifests/bin/build-chromiumos-image.sh`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/manifests/bin/build-chromiumos-image.sh) | Integration — Builder | Downloads a pre-built stage3 tarball and repackages it as an Incus-compatible image (`rootfs.tar.xz` + `metadata.tar.xz`). |
+| [`integrations/penguins-incus-platform/unified-image-server/penguins-eggs/README.md`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/penguins-eggs/README.md) | Integration — Docs | How penguins-eggs runs inside the unified image server, including ChromiumOS specifics. |
+| [`integrations/penguins-incus-platform/unified-image-server/penguins-eggs/conf/derivatives_chromiumos.yaml`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/penguins-eggs/conf/derivatives_chromiumos.yaml) | Integration — Config | Mirror of `conf/derivatives_chromiumos.yaml` for use inside the image server container. |
+| [`integrations/penguins-incus-platform/unified-image-server/penguins-eggs/conf/flavours/chromiumos.yaml`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/penguins-eggs/conf/flavours/chromiumos.yaml) | Integration — Config | Mirror of `conf/flavours/chromiumos.yaml` for use inside the image server container. |
+| [`integrations/penguins-incus-platform/unified-image-server/penguins-eggs/src/classes/pacman.d/chromiumos.ts`]({{REPO_BLOB}}/integrations/penguins-incus-platform/unified-image-server/penguins-eggs/src/classes/pacman.d/chromiumos.ts) | Integration — Source | Mirror of `src/classes/pacman.d/chromiumos.ts` bundled inside the image server container. |
 
 ---
 
@@ -270,7 +270,7 @@ eggs produce --cros-flavour custom --cros-browser-repo https://github.com/your/b
 ### Build a stage3 container (amd64)
 
 ```bash
-cd integrations/incus-image-server/unified-image-server/chromiumos-stage3
+cd integrations/penguins-incus-platform/unified-image-server/chromiumos-stage3
 sudo ./build.sh --board reven
 ```
 
@@ -284,7 +284,7 @@ sudo ./build.sh --board arm64-generic
 ### Build an Incus image from a pre-built stage3
 
 ```bash
-cd integrations/incus-image-server/unified-image-server/manifests/bin
+cd integrations/penguins-incus-platform/unified-image-server/manifests/bin
 ./build-chromiumos-image.sh --board reven --release R146
 ```
 

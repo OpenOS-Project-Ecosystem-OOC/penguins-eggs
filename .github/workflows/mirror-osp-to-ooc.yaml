@@ -26,7 +26,7 @@ jobs:
       - name: Rewrite docs placeholder URLs for OOC
         run: |
           REPO_URL="https://github.com/OpenOS-Project-Ecosystem-OOC/penguins-eggs"
-          find . -path './.git' -prune -o -name '*.md' -print | while read f; do
+          find ./docs/chromiumos -name '*.md' | while read f; do
             sed -i \
               -e "s|{{REPO_BLOB}}|${REPO_URL}/blob/all-features|g" \
               -e "s|{{REPO_TREE}}|${REPO_URL}/tree/all-features|g" \

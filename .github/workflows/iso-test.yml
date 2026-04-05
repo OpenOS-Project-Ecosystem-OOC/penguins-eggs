@@ -54,16 +54,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build
-        run: pnpm run build
-
       - name: Ensure Node.js is available
         run: |
           node -v
           npm -v
 
       - name: Configure eggs
-        run: sudo ./bin/run.js config --nointeractive
+        run: |
+          sudo ln -s $(which node) /usr/bin/node
+          sudo ./bin/run.js config --nointeractive
 
       - name: Produce ISO
         run: ./bin/run.js produce --nointeractive --basename test-${{ matrix.distro }}

@@ -7,7 +7,7 @@ name: Trigger book sync on docs change
 on:
   push:
     branches: [all-features]
-    paths: [docs/chromiumos/**]
+    paths: [docs/**]
 
 permissions:
   contents: read

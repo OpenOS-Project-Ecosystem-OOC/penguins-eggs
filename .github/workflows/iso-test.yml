@@ -57,6 +57,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Ensure Node.js is available
+        run: |
+          node -v
+          npm -v
+
       - name: Configure eggs
         run: sudo ./bin/run.js config --nointeractive
 

@@ -59,9 +59,12 @@ jobs:
           node -v
           npm -v
 
+      - name: Create Node.js symlink
+        run: |
+          sudo ln -sf $(which node) /usr/bin/node
+
       - name: Configure eggs
         run: |
-          sudo ln -s $(which node) /usr/bin/node
           sudo ./bin/run.js config --nointeractive
 
       - name: Produce ISO

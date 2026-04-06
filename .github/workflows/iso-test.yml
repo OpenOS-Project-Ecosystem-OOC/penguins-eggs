@@ -61,7 +61,7 @@ jobs:
 
       - name: Create Node.js symlink
         run: |
-          sudo ln -sf $(which node) /usr/bin/node
+          sudo ln -sf $(which node) /usr/bin/node || true
 
       - name: Configure eggs
         run: |

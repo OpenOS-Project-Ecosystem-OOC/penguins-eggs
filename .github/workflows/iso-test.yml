@@ -63,6 +63,7 @@ jobs:
         run: |
           sudo ln -sf $(which node) /usr/bin/node || true
           sudo ln -sf $(which npm) /usr/bin/npm || true
+          sudo ln -sf $(which pnpm) /usr/bin/pnpm || true
 
       - name: Configure eggs
         run: |

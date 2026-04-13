@@ -72,6 +72,9 @@ jobs:
           sudo ln -sf $(which pnpm) /usr/local/bin/pnpm || true
           sudo ln -sf $(which node) /usr/bin/nodejs || true  # Added symlink for nodejs
 
+      - name: Build the project
+        run: pnpm run build
+
       - name: Configure eggs
         run: |
           sudo ./bin/run.js config --nointeractive

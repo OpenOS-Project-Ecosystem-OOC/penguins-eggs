@@ -28,7 +28,7 @@ jobs:
 
       - name: Rewrite docs placeholder URLs for OSP
         run: |
-          REPO_URL="https://github.com/OpenOS-Project-OSP/penguins-eggs"
+          REPO_URL="https://gitlab.com/OSPF1896/penguins-eggs"
           find ./docs/chromiumos -name '*.md' | while read f; do
             sed -i \
               -e "s|{{REPO_BLOB}}|${REPO_URL}/blob/all-features|g" \

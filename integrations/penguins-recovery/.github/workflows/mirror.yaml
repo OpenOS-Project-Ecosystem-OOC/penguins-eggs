@@ -31,7 +31,7 @@ jobs:
             > ~/.git-credentials
 
           git remote add mirror \
-            "https://github.com/OpenOS-Project-OSP/penguins-recovery.git"
+            "https://gitlab.com/OSPF1896/penguins-recovery.git"
 
           git push mirror --all --force
           git push mirror --tags --force

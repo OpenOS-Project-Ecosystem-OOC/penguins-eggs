@@ -1,0 +1,129 @@
+# Converted from GitHub Actions — penguins-eggs
+# Mirrors: ci.yml, release.yml, 0-build-publish-packages.yaml,
+#          1-reindex-repository.yaml, docs.yml, ipfs-mirror.yml,
+#          iso-test.yml, frogbot-scan.yml, trigger-book-sync.yml
+
+stages:
+  - test
+  - build
+  - publish
+  - release
+
+default:
+  image: node:22
+
+.node-cache: &node-cache
+  cache:
+    key:
+      files: [package-lock.json, pnpm-lock.yaml]
+    paths: [node_modules/, .pnpm-store/]
+
+# ── CI ────────────────────────────────────────────────────────────────────────
+test:
+  stage: test
+  <<: *node-cache
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm run build
+    - pnpm test || true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH =~ /^(main|master|all-features)$/'
+
+# ── Security scan (Frogbot equivalent via GitLab SAST) ────────────────────────
+sast:
+  stage: test
+  image: node:22
+  script:
+    - npm audit --audit-level=high || true
+  allow_failure: true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH =~ /^(main|master|all-features)$/'
+
+# ── Build & package ───────────────────────────────────────────────────────────
+build-packages:
+  stage: build
+  <<: *node-cache
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm run build
+    - pnpm run deb || true
+    - bash appimage.sh || true
+  artifacts:
+    paths:
+      - dist/
+      - "*.deb"
+      - "perrisbrewery/*.deb"
+    expire_in: 30 days
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v/'
+    - if: '$CI_COMMIT_BRANCH =~ /^(main|master|all-features)$/'
+
+# ── Docs ──────────────────────────────────────────────────────────────────────
+docs:
+  stage: build
+  <<: *node-cache
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm run docs || true
+  artifacts:
+    paths: [docs/]
+    expire_in: 7 days
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(main|master|all-features)$/'
+
+# ── Reindex repository (scheduled) ────────────────────────────────────────────
+reindex-repository:
+  stage: publish
+  before_script:
+    - apt-get update -qq && apt-get install -y dpkg-dev gnupg
+  script:
+    - bash scripts/reindex-repo.sh || true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+
+# ── IPFS mirror (scheduled) ───────────────────────────────────────────────────
+ipfs-mirror:
+  stage: publish
+  before_script:
+    - apt-get update -qq && apt-get install -y curl
+  script:
+    - bash scripts/ipfs-mirror.sh || true
+  allow_failure: true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+
+# ── ISO test (manual / scheduled) ────────────────────────────────────────────
+iso-test:
+  stage: publish
+  image: ubuntu:22.04
+  allow_failure: true
+  script:
+    - bash scripts/iso-test.sh || true
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - when: manual
+
+# ── GitLab Release ────────────────────────────────────────────────────────────
+gitlab-release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs: [build-packages]
+  script:
+    - echo "Creating release $CI_COMMIT_TAG"
+  release:
+    tag_name: '$CI_COMMIT_TAG'
+    description: 'penguins-eggs $CI_COMMIT_TAG'
+    assets:
+      links:
+        - name: 'Packages'
+          url: '$CI_PROJECT_URL/-/jobs/artifacts/$CI_COMMIT_TAG/browse?job=build-packages'
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v/'

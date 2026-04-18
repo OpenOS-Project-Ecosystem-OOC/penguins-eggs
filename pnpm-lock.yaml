@@ -26,6 +26,9 @@ importers:
       '@oclif/plugin-version':
         specifier: ^2.2.36
         version: 2.2.36
+      '@openos-project/penguins-eggs-audit':
+        specifier: ^0.1.0
+        version: 0.1.0(js-yaml@4.1.1)
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
@@ -80,9 +83,6 @@ importers:
       netmask:
         specifier: ^2.0.2
         version: 2.0.2
-      penguins-eggs-audit:
-        specifier: https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz
-        version: https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz(js-yaml@4.1.1)
       penguins-eggs-integrations:
         specifier: file:./integrations
         version: file:integrations(js-yaml@4.1.1)
@@ -1444,6 +1444,13 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@oclif/core': '>= 3.0.0'
+
+  '@openos-project/penguins-eggs-audit@0.1.0':
+    resolution: {integrity: sha1-fKo2XE5m0vhifqXuDjC+/B8wXH4=, tarball: https://gitlab.com/api/v4/projects/81413030/packages/npm/@openos-project/penguins-eggs-audit/-/@openos-project/penguins-eggs-audit-0.1.0.tgz}
+    engines: {node: '>=20'}
+    hasBin: true
+    peerDependencies:
+      js-yaml: ^4.1.0
 
   '@peculiar/asn1-cms@2.6.1':
     resolution: {integrity: sha512-vdG4fBF6Lkirkcl53q6eOdn3XYKt+kJTG59edgRZORlg/3atWWEReRCx5rYE1ZzTTX6vLK5zDMjHh7vbrcXGtw==}
@@ -4933,14 +4940,6 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
-  penguins-eggs-audit@https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz:
-    resolution: {tarball: https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz}
-    version: 0.1.0
-    engines: {node: '>=20'}
-    hasBin: true
-    peerDependencies:
-      js-yaml: ^4.1.0
-
   penguins-eggs-integrations@file:integrations:
     resolution: {directory: integrations, type: directory}
     engines: {node: '>=20'}
@@ -8333,6 +8332,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@openos-project/penguins-eggs-audit@0.1.0(js-yaml@4.1.1)':
+    dependencies:
+      js-yaml: 4.1.1
+
   '@peculiar/asn1-cms@2.6.1':
     dependencies:
       '@peculiar/asn1-schema': 2.6.0
@@ -10243,8 +10246,8 @@ snapshots:
       eslint-config-oclif: 5.2.2(eslint@10.0.0)
       eslint-config-xo: 0.49.0(eslint@10.0.0)
       eslint-config-xo-space: 0.35.0(eslint@10.0.0)
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@10.0.0)
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.0)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0))(eslint@10.0.0)
       eslint-plugin-jsdoc: 50.8.0(eslint@10.0.0)
       eslint-plugin-mocha: 10.5.0(eslint@10.0.0)
       eslint-plugin-n: 17.24.0(eslint@10.0.0)(typescript@5.9.3)
@@ -10289,7 +10292,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@10.0.0):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.3(supports-color@8.1.1)
@@ -10300,18 +10303,18 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.0)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0))(eslint@10.0.0)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.0):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0))(eslint@10.0.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.56.0(eslint@10.0.0)(typescript@5.9.3)
       eslint: 10.0.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@10.0.0)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -10328,7 +10331,7 @@ snapshots:
       eslint-utils: 2.1.0
       regexpp: 3.2.0
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.0):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0))(eslint@10.0.0):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -10339,7 +10342,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 10.0.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.0)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.0)(typescript@5.9.3))(eslint@10.0.0))(eslint@10.0.0))(eslint@10.0.0)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -12657,10 +12660,6 @@ snapshots:
   path-to-regexp@8.3.0: {}
 
   path-type@4.0.0: {}
-
-  penguins-eggs-audit@https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz(js-yaml@4.1.1):
-    dependencies:
-      js-yaml: 4.1.1
 
   penguins-eggs-integrations@file:integrations(js-yaml@4.1.1):
     dependencies:

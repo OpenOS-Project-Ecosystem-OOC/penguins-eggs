@@ -34,13 +34,13 @@
         "mustache": "^4.2.0",
         "netmask": "^2.0.2",
         "penguins-eggs-integrations": "file:./integrations",
-        "penguins-eggs-audit": "https://gitlab.com/openos-project/penguins-eggs_deving/penguins-eggs-audit/-/archive/abf7a0028301aff8c6e67bb3bc2691685bc6821f/penguins-eggs-audit-abf7a0028301aff8c6e67bb3bc2691685bc6821f.tar.gz",
         "react": "^19.2.4",
         "read": "^5.0.1",
         "systeminformation": "^5.31.1",
         "tftp": "^0.1.2",
         "vite": "^7.3.1",
-        "ws": "^8.19.0"
+        "ws": "^8.19.0",
+        "@openos-project/penguins-eggs-audit": "^0.1.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.3",

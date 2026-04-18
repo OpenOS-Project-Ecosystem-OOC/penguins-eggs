@@ -3,7 +3,7 @@
 #
 # Build a legacy BIOS-bootable MBR disk image using partymix.
 #
-# partymix (https://github.com/pyx-cvm/partymix) combines filesystem images
+# partymix (https://gitlab.com/openos-project/upstream-mirrors/partymix) combines filesystem images
 # into a single MBR-partitioned disk image. This builder produces a recovery
 # image for legacy BIOS hardware that cannot boot UEFI.
 #
@@ -65,7 +65,7 @@ find_partymix() {
   error "partymix not found."
   error "Options:"
   error "  1. Build from source:"
-  error "     git clone https://github.com/pyx-cvm/partymix"
+  error "     git clone https://gitlab.com/openos-project/upstream-mirrors/partymix"
   error "     cargo build --release --manifest-path partymix/Cargo.toml"
   error "     ./build.sh --src-dir partymix"
   error "  2. Place partymix on PATH"

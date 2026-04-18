@@ -3,7 +3,7 @@
 #
 # Wrap a penguins-recovery EFI binary into a bootable GPT disk image.
 #
-# Uses UEFI-GPT-image-creator (https://github.com/queso-fuego/UEFI-GPT-image-creator)
+# Uses UEFI-GPT-image-creator (https://gitlab.com/openos-project/upstream-mirrors/UEFI-GPT-image-creator)
 # to produce a raw GPT disk image (.hdd) or VHD with:
 #   Partition 1: FAT32 EFI System Partition (ESP) — contains the recovery EFI
 #   Partition 2: Basic Data Partition — contains the SquashFS/EROFS rootfs
@@ -76,7 +76,7 @@ find_write_gpt() {
   error "write_gpt not found."
   error "Options:"
   error "  1. Build from source:"
-  error "     git clone https://github.com/queso-fuego/UEFI-GPT-image-creator"
+  error "     git clone https://gitlab.com/openos-project/upstream-mirrors/UEFI-GPT-image-creator"
   error "     make -C UEFI-GPT-image-creator"
   error "     ./build.sh --src-dir UEFI-GPT-image-creator"
   error "  2. Place write_gpt on PATH"

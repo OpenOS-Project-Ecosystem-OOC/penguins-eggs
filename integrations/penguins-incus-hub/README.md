@@ -1,8 +1,8 @@
 # penguins-incus-hub
 
 Integration layer connecting
-[penguins-incus-platform](https://github.com/Interested-Deving-1896/penguins-incus-platform)
-(PIP) with [penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs).
+[penguins-incus-platform](https://gitlab.com/OSPF1896/penguins-incus-platform)
+(PIP) with [penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs).
 
 PIP is a unified Incus container and VM management platform — Qt6/QML desktop
 UI, React web UI, and CLI — with provisioning plugins for generic Linux
@@ -51,7 +51,7 @@ POST_HARD_RESET_RESTART=1
 ## Installation
 
 ```bash
-git clone https://github.com/Interested-Deving-1896/penguins-incus-platform
+git clone https://gitlab.com/OSPF1896/penguins-incus-platform
 cd penguins-incus-platform
 pip install -e "penguins-incus-platform/daemon[dev]"
 pip install -e "penguins-incus-platform/cli[dev]"

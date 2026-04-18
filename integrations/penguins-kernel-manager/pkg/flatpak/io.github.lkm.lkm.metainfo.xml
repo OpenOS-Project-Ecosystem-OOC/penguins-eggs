@@ -23,8 +23,8 @@
 
   <launchable type="desktop-id">io.github.lkm.lkm.desktop</launchable>
 
-  <url type="homepage">https://github.com/Interested-Deving-1896/lkm</url>
-  <url type="bugtracker">https://github.com/Interested-Deving-1896/lkm/issues</url>
+  <url type="homepage">https://gitlab.com/OSPF1896/lkm</url>
+  <url type="bugtracker">https://gitlab.com/OSPF1896/lkm/issues</url>
 
   <provides>
     <binary>lkm-gui</binary>

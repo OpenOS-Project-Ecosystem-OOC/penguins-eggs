@@ -6,14 +6,14 @@ External projects and ecosystem tools integrated into penguins-powerwash.
 
 | Direction | Tool | Hook point | Action |
 |---|---|---|---|
-| powerwash → recovery | [penguins-recovery](https://github.com/Interested-Deving-1896/penguins-recovery) | Pre-reset (any mode) | `penguins-recovery snapshot create pre-powerwash-<mode>` |
-| powerwash → eggs | [penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs) | Pre-reset (optional) | `eggs produce --naked` to snapshot live state before wipe |
+| powerwash → recovery | [penguins-recovery](https://gitlab.com/OSPF1896/penguins-recovery) | Pre-reset (any mode) | `penguins-recovery snapshot create pre-powerwash-<mode>` |
+| powerwash → eggs | [penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs) | Pre-reset (optional) | `eggs produce --naked` to snapshot live state before wipe |
 | powerwash → recovery | penguins-recovery | Post-reset (hard/sysprep) | `penguins-recovery adapter.sh` to re-layer recovery tools |
 | powerwash → eggs | penguins-eggs | Post-backup | Records backup path for next ISO manifest |
 | eggs → powerwash | penguins-eggs | `eggs produce` | Embeds powerwash binary + libs into ISO; adds GRUB factory-reset entry |
 | recovery → powerwash | penguins-powerwash plugin system | Post-reset | Runs `penguins-powerwash info` to confirm clean state |
-| pkm → powerwash | [penguins-kernel-manager](https://github.com/Interested-Deving-1896/penguins-kernel-manager) | Post-reset | Reinstalls held kernels after hard reset via `pkm-plugin.sh` |
-| pif → powerwash | [penguins-immutable-framework](https://github.com/Interested-Deving-1896/penguins-immutable-framework) | Pre-reset | Exits mutable mode before reset via `pif-plugin.sh` |
+| pkm → powerwash | [penguins-kernel-manager](https://gitlab.com/OSPF1896/penguins-kernel-manager) | Post-reset | Reinstalls held kernels after hard reset via `pkm-plugin.sh` |
+| pif → powerwash | [penguins-immutable-framework](https://gitlab.com/OSPF1896/penguins-immutable-framework) | Pre-reset | Exits mutable mode before reset via `pif-plugin.sh` |
 
 ### Integration files
 

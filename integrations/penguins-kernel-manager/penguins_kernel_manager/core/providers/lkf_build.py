@@ -164,7 +164,7 @@ class LkfBuildProvider(KernelProvider):
     def availability_reason(self) -> str:
         return (
             "lkf is not installed or not on PATH.  "
-            "Clone https://github.com/Interested-Deving-1896/lkf and run 'make install'."
+            "Clone https://gitlab.com/OSPF1896/lkf and run 'make install'."
         )
 
     # ------------------------------------------------------------------

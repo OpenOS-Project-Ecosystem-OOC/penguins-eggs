@@ -2,10 +2,10 @@
 
 A distro-agnostic, filesystem-agnostic factory reset tool for Linux.
 
-Forked from [linux-powerwash](https://github.com/Interested-Deving-1896/linux-powerwash)
+Forked from [linux-powerwash](https://gitlab.com/OSPF1896/linux-powerwash)
 and rebranded as part of the **penguins ecosystem** alongside
-[penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs) and
-[penguins-recovery](https://github.com/Interested-Deving-1896/penguins-recovery).
+[penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs) and
+[penguins-recovery](https://gitlab.com/OSPF1896/penguins-recovery).
 
 ---
 
@@ -62,7 +62,7 @@ penguins-powerwash also ships an **eggs plugin** (`integration/eggs-plugin/power
 ## Installation
 
 ```bash
-git clone https://github.com/Interested-Deving-1896/penguins-powerwash
+git clone https://gitlab.com/OSPF1896/penguins-powerwash
 cd penguins-powerwash
 sudo make install
 ```
@@ -102,4 +102,4 @@ GPL-3.0. See [LICENSE](LICENSE).
 
 ## Upstream
 
-Forked from [Interested-Deving-1896/linux-powerwash](https://github.com/Interested-Deving-1896/linux-powerwash).
+Forked from [Interested-Deving-1896/linux-powerwash](https://gitlab.com/OSPF1896/linux-powerwash).

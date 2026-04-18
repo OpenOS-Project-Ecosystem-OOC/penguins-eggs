@@ -26,7 +26,7 @@ Eggs-AI understands penguins-eggs commands, configurations, and workflows. It pr
 ## Installation
 
 ```bash
-git clone https://github.com/Interested-Deving-1896/eggs-ai.git
+git clone https://gitlab.com/OSPF1896/eggs-ai.git
 cd eggs-ai
 npm install
 npm run build
@@ -273,7 +273,7 @@ GEMINI_API_KEY=your-key docker compose up -d
 
 ## Integration with eggs-gui
 
-Eggs-AI is designed to integrate with [eggs-gui](https://github.com/Interested-Deving-1896/eggs-gui) — the unified GUI for penguins-eggs (Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web).
+Eggs-AI is designed to integrate with [eggs-gui](https://gitlab.com/OSPF1896/eggs-gui) — the unified GUI for penguins-eggs (Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web).
 
 ### Architecture
 

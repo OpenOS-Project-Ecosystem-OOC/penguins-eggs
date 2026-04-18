@@ -489,7 +489,7 @@ eggs wardrobe import https://gist.example.com/abc123
 
 ### 7.1 penguins-incus-hub
 
-**What:** Embed the [penguins-incus-platform](https://github.com/Interested-Deving-1896/penguins-incus-platform)
+**What:** Embed the [penguins-incus-platform](https://gitlab.com/OSPF1896/penguins-incus-platform)
 (PIP) daemon and CLI into produced ISOs so that any penguins-eggs live system
 can manage Incus containers and VMs out of the box.
 

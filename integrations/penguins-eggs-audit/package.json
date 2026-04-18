@@ -112,7 +112,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Interested-Deving-1896/penguins-eggs-audit"
+    "url": "https://gitlab.com/OSPF1896/penguins-eggs-audit"
   },
   "engines": {
     "node": ">=20"

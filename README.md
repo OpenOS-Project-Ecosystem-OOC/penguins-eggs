@@ -347,7 +347,7 @@ DISTROBUILDER_OUTPUT=/var/lib/eggs/distrobuilder
 - `integration/eggs-plugin/` — post-produce hook: squashfs detection, distro detection, build
 - `integration/recovery-plugin/` — pre-reset hook: snapshots rootfs via `distrobuilder pack`
 
-Source: [`integrations/penguins-distrobuilder/`](integrations/penguins-distrobuilder/) and https://github.com/Interested-Deving-1896/penguins-distrobuilder
+Source: [`integrations/penguins-distrobuilder/`](integrations/penguins-distrobuilder/) and https://gitlab.com/OSPF1896/penguins-distrobuilder
 
 ## penguins-incus-platform
 
@@ -379,7 +379,7 @@ INCUS_SERVER_TOKEN=<token>
 INCUS_SERVER_PRODUCT=<product-id>
 ```
 
-Source: [`integrations/penguins-incus-platform/`](integrations/penguins-incus-platform/) and [github.com/Interested-Deving-1896/penguins-incus-platform](https://github.com/Interested-Deving-1896/penguins-incus-platform)
+Source: [`integrations/penguins-incus-platform/`](integrations/penguins-incus-platform/) and [github.com/Interested-Deving-1896/penguins-incus-platform](https://gitlab.com/OSPF1896/penguins-incus-platform)
 
 ## Plugin dispatch
 

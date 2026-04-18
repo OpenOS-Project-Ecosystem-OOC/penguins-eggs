@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: lkm
-Upstream-Contact: https://github.com/Interested-Deving-1896/lkm
-Source: https://github.com/Interested-Deving-1896/lkm
+Upstream-Contact: https://gitlab.com/OSPF1896/lkm
+Source: https://gitlab.com/OSPF1896/lkm
 
 Files: *
 Copyright: 2025 lkm contributors

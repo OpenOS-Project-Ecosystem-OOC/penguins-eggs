@@ -1,6 +1,6 @@
 ## Summary
 
-Merges [lkf](https://github.com/Interested-Deving-1896/lkf) (Linux Kernel Framework — shell build pipeline) and [ukm](https://github.com/Interested-Deving-1896/ukm) (Universal Kernel Manager — Python runtime management) into a single Python package, `lkm`, covering the full kernel lifecycle: **build → install → manage**.
+Merges [lkf](https://gitlab.com/OSPF1896/lkf) (Linux Kernel Framework — shell build pipeline) and [ukm](https://gitlab.com/OSPF1896/ukm) (Universal Kernel Manager — Python runtime management) into a single Python package, `lkm`, covering the full kernel lifecycle: **build → install → manage**.
 
 ---
 

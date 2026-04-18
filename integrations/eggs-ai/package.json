@@ -38,11 +38,11 @@
   "author": "Eggs-AI Contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Interested-Deving-1896/eggs-ai.git"
+    "url": "https://gitlab.com/OSPF1896/eggs-ai.git"
   },
-  "homepage": "https://github.com/Interested-Deving-1896/eggs-ai#readme",
+  "homepage": "https://gitlab.com/OSPF1896/eggs-ai#readme",
   "bugs": {
-    "url": "https://github.com/Interested-Deving-1896/eggs-ai/issues"
+    "url": "https://gitlab.com/OSPF1896/eggs-ai/issues"
   },
   "license": "MIT",
   "files": [

@@ -4,8 +4,8 @@ Release:        1%{?dist}
 Summary:        Linux Kernel Manager — build, install, and manage kernels across all major distros
 
 License:        GPL-3.0-or-later
-URL:            https://github.com/Interested-Deving-1896/lkm
-Source0:        https://github.com/Interested-Deving-1896/lkm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.com/OSPF1896/lkm
+Source0:        https://gitlab.com/OSPF1896/lkm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

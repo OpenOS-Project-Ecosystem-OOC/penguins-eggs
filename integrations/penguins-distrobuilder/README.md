@@ -3,7 +3,7 @@
 Unified project combining [lxc/distrobuilder](https://github.com/lxc/distrobuilder)
 and [itoffshore/distrobuilder-menu](https://github.com/itoffshore/distrobuilder-menu)
 into a single repository, integrated with
-[penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs).
+[penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs).
 
 ## Layout
 

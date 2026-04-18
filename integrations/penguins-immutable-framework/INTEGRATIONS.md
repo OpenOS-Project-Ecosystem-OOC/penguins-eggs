@@ -6,14 +6,14 @@ External projects and ecosystem tools integrated into penguins-immutable-framewo
 
 | Direction | Tool | Hook point | Action |
 |---|---|---|---|
-| pif → recovery | [penguins-recovery](https://github.com/Interested-Deving-1896/penguins-recovery) | Pre-upgrade | `penguins-recovery snapshot create pre-pif-upgrade-<backend>` |
-| pif → eggs | [penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs) | Post-upgrade | Notifies eggs via `EGGS_HOOK=pif-upgraded` so next ISO reflects new root |
+| pif → recovery | [penguins-recovery](https://gitlab.com/OSPF1896/penguins-recovery) | Pre-upgrade | `penguins-recovery snapshot create pre-pif-upgrade-<backend>` |
+| pif → eggs | [penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs) | Post-upgrade | Notifies eggs via `EGGS_HOOK=pif-upgraded` so next ISO reflects new root |
 | pif → eggs | penguins-eggs | `pif mutable enter` | Warns eggs to defer ISO builds (`EGGS_HOOK=pif-mutable-enter`) |
 | pif → eggs | penguins-eggs | `pif mutable exit` | Notifies eggs immutability restored; optionally triggers `eggs produce --update-root` |
 | pif → recovery | penguins-recovery | Pre-rollback | `penguins-recovery snapshot create pre-pif-rollback-<id>` |
 | eggs → pif | penguins-eggs | `eggs produce` | Embeds active `pif.toml` + `pif status --json` into ISO at `/etc/penguins-immutable-framework/` |
 | eggs → pif | penguins-eggs | `eggs update` | Aborts if system is in mutable mode |
-| powerwash → pif | [penguins-powerwash](https://github.com/Interested-Deving-1896/penguins-powerwash) | Pre-reset | Exits mutable mode before factory reset |
+| powerwash → pif | [penguins-powerwash](https://gitlab.com/OSPF1896/penguins-powerwash) | Pre-reset | Exits mutable mode before factory reset |
 | powerwash → pif | penguins-powerwash | Post-reset | Re-runs `pif init` with existing `pif.toml` to restore immutable backend |
 
 ### Integration files

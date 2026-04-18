@@ -12,5 +12,5 @@
    chroot-rescue.sh  -- Mount and chroot into an installed system
    detect-disks.sh   -- Show disk layout, LUKS, LVM, and EFI info
 
- Documentation: https://github.com/Interested-Deving-1896/penguins-recovery
+ Documentation: https://gitlab.com/OSPF1896/penguins-recovery
 

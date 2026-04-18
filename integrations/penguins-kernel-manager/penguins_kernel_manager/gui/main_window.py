@@ -331,7 +331,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(
                 self, "lkf not found",
                 "lkf is not installed or not on PATH.\n\n"
-                "Clone https://github.com/Interested-Deving-1896/lkf "
+                "Clone https://gitlab.com/OSPF1896/lkf "
                 "and run 'make install'.",
             )
             return

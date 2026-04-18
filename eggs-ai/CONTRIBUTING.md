@@ -3,7 +3,7 @@
 ## Quick start
 
 ```bash
-git clone https://github.com/Interested-Deving-1896/eggs-ai.git
+git clone https://gitlab.com/OSPF1896/eggs-ai.git
 cd eggs-ai
 npm install
 npm run build

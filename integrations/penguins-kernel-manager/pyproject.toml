@@ -67,7 +67,7 @@ pkm     = "penguins_kernel_manager.cli.main:main"
 pkm-gui = "penguins_kernel_manager.gui.app:main"
 
 [project.urls]
-Repository = "https://github.com/Interested-Deving-1896/penguins-kernel-manager"
+Repository = "https://gitlab.com/OSPF1896/penguins-kernel-manager"
 
 [tool.hatch.build.targets.wheel]
 packages = ["penguins_kernel_manager"]

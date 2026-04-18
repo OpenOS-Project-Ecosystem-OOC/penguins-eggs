@@ -1,6 +1,6 @@
 # eggs-ai recovery advisor integration
 
-Connects the penguins-recovery environment to the [eggs-ai](https://github.com/Interested-Deving-1896/eggs-ai) HTTP API, giving users AI-assisted diagnostics and Q&A from inside a recovery session.
+Connects the penguins-recovery environment to the [eggs-ai](https://gitlab.com/OSPF1896/eggs-ai) HTTP API, giving users AI-assisted diagnostics and Q&A from inside a recovery session.
 
 ## What it is
 

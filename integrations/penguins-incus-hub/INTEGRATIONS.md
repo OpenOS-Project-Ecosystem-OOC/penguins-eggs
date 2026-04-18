@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Repository | https://github.com/Interested-Deving-1896/penguins-incus-platform |
+| Repository | https://gitlab.com/OSPF1896/penguins-incus-platform |
 | Language | Python (daemon + CLI), TypeScript (web UI), C++/QML (desktop UI) |
 | License | GPL-3.0-or-later (daemon, CLI, web UI); LGPL-2.1-or-later (libpenguins-incus-qt) |
 

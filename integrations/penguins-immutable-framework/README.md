@@ -3,10 +3,10 @@
 A distro-agnostic, architecture-agnostic framework for building immutable Linux
 distributions.
 
-Forked from [immutable-linux-framework](https://github.com/Interested-Deving-1896/immutable-linux-framework)
+Forked from [immutable-linux-framework](https://gitlab.com/OSPF1896/immutable-linux-framework)
 and rebranded as part of the **penguins ecosystem** alongside
-[penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs) and
-[penguins-recovery](https://github.com/Interested-Deving-1896/penguins-recovery).
+[penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs) and
+[penguins-recovery](https://gitlab.com/OSPF1896/penguins-recovery).
 
 Distro builders choose one or more immutability backends at build time; the
 framework provides a unified HAL and CLI surface on top.
@@ -122,4 +122,4 @@ Each integrated backend retains its original license. PIF framework code
 
 ## Upstream
 
-Forked from [Interested-Deving-1896/immutable-linux-framework](https://github.com/Interested-Deving-1896/immutable-linux-framework).
+Forked from [Interested-Deving-1896/immutable-linux-framework](https://gitlab.com/OSPF1896/immutable-linux-framework).

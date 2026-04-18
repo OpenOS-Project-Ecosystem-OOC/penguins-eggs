@@ -40,7 +40,7 @@ External projects integrated into penguins-recovery builders, adapters, and scri
 
 ## Audit & Security (`integration/audit/`)
 
-Opt-in post-build steps adapted from [penguins-eggs-audit](https://github.com/Interested-Deving-1896/penguins-eggs-audit).
+Opt-in post-build steps adapted from [penguins-eggs-audit](https://gitlab.com/OSPF1896/penguins-eggs-audit).
 All four fail gracefully when the required binary is absent.
 
 | Module | Upstream | When to run | Purpose |
@@ -73,7 +73,7 @@ await vouch.attest('recovery.iso', { keyPath: '/etc/keys/recovery.key', outputDi
 
 ## AI Advisor (`integration/eggs-ai/`)
 
-Connects the recovery environment to the [eggs-ai](https://github.com/Interested-Deving-1896/eggs-ai)
+Connects the recovery environment to the [eggs-ai](https://gitlab.com/OSPF1896/eggs-ai)
 HTTP API for AI-assisted diagnostics and Q&A during a recovery session.
 
 | File | Use case |

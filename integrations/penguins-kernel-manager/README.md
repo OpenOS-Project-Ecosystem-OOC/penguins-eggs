@@ -3,10 +3,10 @@
 Install, build, and manage Linux kernels across all major distributions and CPU
 architectures from a single CLI or GUI.
 
-Forked from [lkm](https://github.com/Interested-Deving-1896/lkm) and rebranded
+Forked from [lkm](https://gitlab.com/OSPF1896/lkm) and rebranded
 as part of the **penguins ecosystem** alongside
-[penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs) and
-[penguins-recovery](https://github.com/Interested-Deving-1896/penguins-recovery).
+[penguins-eggs](https://gitlab.com/OSPF1896/penguins-eggs) and
+[penguins-recovery](https://gitlab.com/OSPF1896/penguins-recovery).
 
 Merges **lkf** (Linux Kernel Framework — shell build pipeline) and **ukm**
 (Universal Kernel Manager — runtime management) into one tool covering the full
@@ -125,7 +125,7 @@ pkm-gui
 ## Development
 
 ```bash
-git clone https://github.com/Interested-Deving-1896/penguins-kernel-manager
+git clone https://gitlab.com/OSPF1896/penguins-kernel-manager
 cd penguins-kernel-manager
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
@@ -143,7 +143,7 @@ GPL-3.0-or-later. See [LICENSE](LICENSE).
 
 ## Upstream
 
-Forked from [Interested-Deving-1896/lkm](https://github.com/Interested-Deving-1896/lkm),
+Forked from [Interested-Deving-1896/lkm](https://gitlab.com/OSPF1896/lkm),
 which merges:
-- [lkf](https://github.com/Interested-Deving-1896/lkf) — Linux Kernel Framework
-- [ukm](https://github.com/Interested-Deving-1896/ukm) — Universal Kernel Manager
+- [lkf](https://gitlab.com/OSPF1896/lkf) — Linux Kernel Framework
+- [ukm](https://gitlab.com/OSPF1896/ukm) — Universal Kernel Manager

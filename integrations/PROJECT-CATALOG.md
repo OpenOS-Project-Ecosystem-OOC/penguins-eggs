@@ -11,15 +11,15 @@ Seven full companion repositories merged into `integrations/` (and some also at 
 
 | Project | Language | Description | URL |
 |---|---|---|---|
-| penguins-recovery | Shell | Unified rescue toolkit: adapters, builders, GUI profiles, Rescapp | https://github.com/Interested-Deving-1896/penguins-recovery |
-| penguins-powerwash | Shell | Factory reset tool: soft/medium/hard/sysprep/hardware modes, GPG backup | https://github.com/Interested-Deving-1896/penguins-powerwash |
-| penguins-immutable-framework | Go + Shell | Immutable distro framework: abroot, ashos, frzr, akshara, btrfs-dwarfs backends | https://github.com/Interested-Deving-1896/penguins-immutable-framework |
-| penguins-kernel-manager | Python | Kernel lifecycle manager: fetch, patch, compile, install, hold, remove | https://github.com/Interested-Deving-1896/penguins-kernel-manager |
-| penguins-eggs-audit | TypeScript + Shell | Security audit + SBOM framework: vouch, syft, grant, OS hardening (39 projects, 8 domains) | https://github.com/Interested-Deving-1896/penguins-eggs-audit |
-| eggs-gui | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web | https://github.com/Interested-Deving-1896/eggs-gui |
-| eggs-ai | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API, 7 LLM providers | https://github.com/Interested-Deving-1896/eggs-ai |
-| penguins-distrobuilder | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) | https://github.com/Interested-Deving-1896/penguins-distrobuilder |
-| penguins-incus-platform | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 builder | https://github.com/Interested-Deving-1896/penguins-incus-platform |
+| penguins-recovery | Shell | Unified rescue toolkit: adapters, builders, GUI profiles, Rescapp | https://gitlab.com/OSPF1896/penguins-recovery |
+| penguins-powerwash | Shell | Factory reset tool: soft/medium/hard/sysprep/hardware modes, GPG backup | https://gitlab.com/OSPF1896/penguins-powerwash |
+| penguins-immutable-framework | Go + Shell | Immutable distro framework: abroot, ashos, frzr, akshara, btrfs-dwarfs backends | https://gitlab.com/OSPF1896/penguins-immutable-framework |
+| penguins-kernel-manager | Python | Kernel lifecycle manager: fetch, patch, compile, install, hold, remove | https://gitlab.com/OSPF1896/penguins-kernel-manager |
+| penguins-eggs-audit | TypeScript + Shell | Security audit + SBOM framework: vouch, syft, grant, OS hardening (39 projects, 8 domains) | https://gitlab.com/OSPF1896/penguins-eggs-audit |
+| eggs-gui | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web | https://gitlab.com/OSPF1896/eggs-gui |
+| eggs-ai | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API, 7 LLM providers | https://gitlab.com/OSPF1896/eggs-ai |
+| penguins-distrobuilder | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) | https://gitlab.com/OSPF1896/penguins-distrobuilder |
+| penguins-incus-platform | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 builder | https://gitlab.com/OSPF1896/penguins-incus-platform |
 
 ---
 
@@ -90,5 +90,5 @@ Seven full companion repositories merged into `integrations/` (and some also at 
 
 | Project | Description | Language | URL |
 |---|---|---|---|
-| penguins-incus-platform | Unified Incus container and VM management — Qt6/QML desktop UI, React web UI, CLI; provisioning plugins for generic Linux, Waydroid, macOS KVM, and Windows VMs | Python, TypeScript, C++/QML | https://github.com/Interested-Deving-1896/penguins-incus-platform |
+| penguins-incus-platform | Unified Incus container and VM management — Qt6/QML desktop UI, React web UI, CLI; provisioning plugins for generic Linux, Waydroid, macOS KVM, and Windows VMs | Python, TypeScript, C++/QML | https://gitlab.com/OSPF1896/penguins-incus-platform |
 | penguins-incus-hub | Integration layer connecting penguins-incus-platform with penguins-eggs: eggs plugin + recovery plugin | Shell | (this repo, `integrations/penguins-incus-hub/`) |

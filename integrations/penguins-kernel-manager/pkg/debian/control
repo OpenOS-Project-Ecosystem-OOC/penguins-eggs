@@ -1,7 +1,7 @@
 Source: lkm
 Section: admin
 Priority: optional
-Maintainer: lkm contributors <https://github.com/Interested-Deving-1896/lkm>
+Maintainer: lkm contributors <https://gitlab.com/OSPF1896/lkm>
 Build-Depends:
  debhelper-compat (= 13),
  dh-python,
@@ -12,9 +12,9 @@ Build-Depends:
  python3-pytest <!nocheck>,
 Rules-Requires-Root: no
 Standards-Version: 4.6.2
-Homepage: https://github.com/Interested-Deving-1896/lkm
-Vcs-Git: https://github.com/Interested-Deving-1896/lkm.git
-Vcs-Browser: https://github.com/Interested-Deving-1896/lkm
+Homepage: https://gitlab.com/OSPF1896/lkm
+Vcs-Git: https://gitlab.com/OSPF1896/lkm.git
+Vcs-Browser: https://gitlab.com/OSPF1896/lkm
 
 Package: lkm
 Architecture: all

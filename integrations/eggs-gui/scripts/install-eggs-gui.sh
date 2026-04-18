@@ -73,7 +73,7 @@ if command -v systemctl >/dev/null 2>&1; then
 [Unit]
 Description=eggs-gui daemon (JSON-RPC socket for penguins-eggs GUI frontends)
 After=network.target
-Documentation=https://github.com/Interested-Deving-1896/eggs-gui
+Documentation=https://gitlab.com/OSPF1896/eggs-gui
 
 [Service]
 Type=simple

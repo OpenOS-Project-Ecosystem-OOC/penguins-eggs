@@ -1,10 +1,10 @@
-# Maintainer: lkm contributors <https://github.com/Interested-Deving-1896/lkm>
+# Maintainer: lkm contributors <https://gitlab.com/OSPF1896/lkm>
 pkgname=lkm
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Linux Kernel Manager — build, install, and manage kernels across all major distros and architectures"
 arch=('any')
-url="https://github.com/Interested-Deving-1896/lkm"
+url="https://gitlab.com/OSPF1896/lkm"
 license=('GPL3')
 depends=(
     'python>=3.11'
@@ -26,7 +26,7 @@ checkdepends=(
     'python-pytest'
     'python-pytest-cov'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Interested-Deving-1896/lkm/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/OSPF1896/lkm/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('SKIP')
 
 build() {

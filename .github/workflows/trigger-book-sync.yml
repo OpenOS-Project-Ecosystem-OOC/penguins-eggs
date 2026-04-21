@@ -25,7 +25,7 @@ jobs:
             -H "Authorization: token ${GH_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             -H "Content-Type: application/json" \
-            "https://api.github.com/repos/Interested-Deving-1896/fork-sync-all/dispatches" \
+            "https://api.github.com/repos/OSPF1896/fork-sync-all/dispatches" \
             -d "{
               \"event_type\": \"eggs-docs-updated\",
               \"client_payload\": {

@@ -1,3 +1,9 @@
 [submodule "test/fixtures/os_release"]
 	path = test/fixtures/os_release
 	url = https://gitlab.com/openos-project/upstream-mirrors/os_release
+[submodule "integrations/eggs-ai"]
+	path = integrations/eggs-ai
+	url = https://gitlab.com/openos-project/penguins-eggs_deving/eggs-ai.git
+[submodule "integrations/eggs-gui"]
+	path = integrations/eggs-gui
+	url = https://gitlab.com/openos-project/penguins-eggs_deving/eggs-gui.git

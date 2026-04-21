@@ -1,8 +1,0 @@
-rootdir/**
-image/**
-scratch/**
-cache/**
-*.tar.zst
-*.iso
-*.log
-BASE

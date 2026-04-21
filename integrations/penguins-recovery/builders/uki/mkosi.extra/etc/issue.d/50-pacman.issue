@@ -1,3 +1,0 @@
-Once network connectivity is established you can install additional packages
-with pacman -S.  The default mirrorlist use world-wide geo-locating mirrors;
-install reflector to create a mirrorlist with local mirrors.

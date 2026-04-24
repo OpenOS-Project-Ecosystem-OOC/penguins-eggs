@@ -39,3 +39,4 @@ appimagetool
 
 cache/*
 nodejs.tar.xz
+.npmrc

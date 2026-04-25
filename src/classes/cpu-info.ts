@@ -13,10 +13,18 @@
  *    Source: https://github.com/HenrikBengtsson/x86-64-level
  *
  *  - cpuinfo CLI (BSD-2, PyTorch/Meta)
- *    Optional system package (`libcpuinfo-dev` / `cpuinfo`). When present,
- *    provides deep cross-arch introspection: SoC name, microarchitecture,
- *    instruction sets, cache topology, and core counts.
+ *    Bundled per-arch at scripts/cpuinfo/cpu-info-<arch>, with a fallback to
+ *    any system-installed `cpuinfo` / `cpu-info` binary. Provides deep
+ *    cross-arch introspection: SoC name, microarchitecture, core counts.
  *    Source: https://github.com/pytorch/cpuinfo
+ *
+ *    Output format (plain text, no JSON support in the CLI tool):
+ *      Packages:
+ *        0: Intel Xeon Platinum 8375C
+ *      Microarchitectures:
+ *        1x Sunny Cove
+ *      Cores:
+ *        0: 2 processors (0-1), Intel Sunny Cove
  *
  * Both tools are called as child processes; no native bindings are required.
  * cpuinfo is treated as optional — all callers degrade gracefully when absent.
@@ -32,6 +40,35 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Path to the bundled x86-64-level script (two levels up from src/classes/)
 const X86_LEVEL_SCRIPT = path.resolve(__dirname, '../../scripts/x86-64-level')
+
+// Map Node.js process.arch to the bundled cpu-info binary name.
+// Bundled binaries live at scripts/cpuinfo/cpu-info-<arch>.
+const ARCH_BINARY_MAP: Record<string, string> = {
+   x64: 'cpu-info-amd64',
+   arm64: 'cpu-info-arm64',
+   ia32: 'cpu-info-i386',
+   riscv64: 'cpu-info-riscv64',
+}
+
+/**
+ * Resolve the cpuinfo binary to use.
+ *
+ * Priority:
+ *   1. Bundled binary at scripts/cpuinfo/cpu-info-<arch>  (always preferred)
+ *   2. System-installed `cpuinfo` on PATH                 (fallback)
+ *   3. null — cpuinfo unavailable
+ */
+function resolveCpuinfoBin(): null | string {
+   const archBinary = ARCH_BINARY_MAP[process.arch]
+   if (archBinary) {
+      const bundled = path.resolve(__dirname, `../../scripts/cpuinfo/${archBinary}`)
+      if (fs.existsSync(bundled)) return bundled
+   }
+
+   // Fall back to system installation
+   const system = shx.which('cpuinfo') ?? shx.which('cpu-info')
+   return system ?? null
+}
 
 export interface ICpuInfo {
    /** x86-64 microarchitecture level (1–4), or 0 on non-x86 / detection failure */
@@ -116,34 +153,11 @@ export default class CpuInfo {
          cpuinfoAvailable: false,
       }
 
-      const cpuinfoBin = shx.which('cpuinfo')
+      const cpuinfoBin = resolveCpuinfoBin()
       if (!cpuinfoBin) return info
 
       info.cpuinfoAvailable = true
-
-      // cpuinfo --json is the most reliable output format
-      const jsonResult = shx.exec(`${cpuinfoBin} --json`, { silent: true })
-      if (jsonResult.code !== 0 || !jsonResult.stdout.trim()) {
-         // Fall back to line-based output
-         this.populateFromText(info, cpuinfoBin)
-         return info
-      }
-
-      try {
-         const data = JSON.parse(jsonResult.stdout)
-         // cpuinfo JSON schema: packages[].name, packages[].processors[].uarch
-         if (Array.isArray(data.packages) && data.packages.length > 0) {
-            const pkg = data.packages[0]
-            info.processorName = pkg.name ?? ''
-            if (Array.isArray(pkg.processors) && pkg.processors.length > 0) {
-               info.microarchitecture = pkg.processors[0].uarch ?? ''
-               info.cores = pkg.processors.length
-            }
-         }
-      } catch {
-         this.populateFromText(info, cpuinfoBin)
-      }
-
+      this.populateFromText(info, cpuinfoBin)
       return info
    }
 
@@ -188,23 +202,48 @@ export default class CpuInfo {
    }
 
    /**
-    * Populate ICpuInfo from plain-text cpuinfo output as a fallback
-    * when JSON output is unavailable.
+    * Populate ICpuInfo by parsing the plain-text output of the cpu-info binary.
+    *
+    * Expected format:
+    *   Packages:
+    *     0: Intel Xeon Platinum 8375C        <- processorName
+    *   Microarchitectures:
+    *     1x Sunny Cove                       <- microarchitecture (strip leading count)
+    *   Cores:
+    *     0: 2 processors (0-1), Intel ...    <- core count (number of tab-indented lines)
     */
    private static populateFromText(info: ICpuInfo, cpuinfoBin: string): void {
-      const result = shx.exec(`${cpuinfoBin}`, { silent: true })
-      if (result.code !== 0) return
+      const result = shx.exec(`"${cpuinfoBin}"`, { silent: true })
+      if (result.code !== 0 || !result.stdout.trim()) return
 
-      for (const line of result.stdout.split('\n')) {
-         const lower = line.toLowerCase()
-         if (lower.includes('package') && lower.includes(':')) {
-            info.processorName = line.split(':').slice(1).join(':').trim()
-         } else if (lower.includes('uarch') && lower.includes(':')) {
-            info.microarchitecture = line.split(':').slice(1).join(':').trim()
-         } else if (lower.includes('processors') && lower.includes(':')) {
-            const n = Number.parseInt(line.split(':').slice(1).join(':').trim(), 10)
-            if (!Number.isNaN(n)) info.cores = n
+      const lines = result.stdout.split('\n')
+      let section = ''
+      let coreCount = 0
+
+      for (const line of lines) {
+         const trimmed = line.trim()
+         if (!trimmed) continue
+
+         // Section headers end with ':'
+         if (!line.startsWith('\t') && trimmed.endsWith(':')) {
+            section = trimmed.slice(0, -1).toLowerCase()
+            continue
+         }
+
+         // Tab-indented lines are section entries
+         if (line.startsWith('\t')) {
+            if (section === 'packages' && !info.processorName) {
+               // "0: Intel Xeon Platinum 8375C" -> strip leading "N: "
+               info.processorName = trimmed.replace(/^\d+:\s*/, '')
+            } else if (section === 'microarchitectures' && !info.microarchitecture) {
+               // "1x Sunny Cove" -> strip leading count
+               info.microarchitecture = trimmed.replace(/^\d+x\s*/, '')
+            } else if (section === 'cores') {
+               coreCount++
+            }
          }
       }
+
+      if (coreCount > 0) info.cores = coreCount
    }
 }

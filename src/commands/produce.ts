@@ -12,6 +12,7 @@ import fs, { link } from 'node:fs'
 import path from 'node:path'
 
 import Compressors from '../classes/compressors.js'
+import CpuInfo from '../classes/cpu-info.js'
 import Distro from '../classes/distro.js'
 import Ovary from '../classes/ovary.js'
 import Utils from '../classes/utils.js'
@@ -252,6 +253,14 @@ export default class Produce extends Command {
       }
 
       Utils.titles(this.id + ' ' + this.argv)
+
+      // CPU preflight: detect x86-64 microarchitecture level and surface it
+      // so the user knows the minimum CPU requirement of the produced ISO.
+      const cpuSummary = CpuInfo.summary()
+      if (cpuSummary) {
+        Utils.info(`CPU: ${cpuSummary}`)
+      }
+
       const ovary = new Ovary(projectRoot)
       Utils.warning('Produce an egg...')
       if (i.calamares) {

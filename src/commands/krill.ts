@@ -11,6 +11,7 @@ import yaml from 'js-yaml'
 import fs from 'node:fs'
 import https from 'node:https'
 
+import CpuInfo from '../classes/cpu-info.js'
 import Utils from '../classes/utils.js'
 import Krill from '../krill/classes/prepare.js'
 import { shx } from '../lib/utils.js'
@@ -119,6 +120,14 @@ export default class KrillCommand extends Command {
 
     if (Utils.isRoot() || testing) {
       if (Utils.isLive() || testing) {
+        // CPU preflight: warn if the ISO was built on a higher x86-64 level
+        // than the machine being installed onto, which would cause post-install
+        // "Illegal instruction" crashes.
+        const cpuSummary = CpuInfo.summary()
+        if (cpuSummary) {
+          Utils.info(`Target CPU: ${cpuSummary}`)
+        }
+
         const krill = new Krill(unattended, nointeractive, halt, chroot)
         await krill.prepare(krillConfig, ip, random, domain, suspend, small, none, crypted, pve, flags.btrfs, replace, testing, verbose)
       } else {

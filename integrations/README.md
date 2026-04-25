@@ -23,9 +23,7 @@ This directory contains all projects integrated with
 | [`penguins-eggs-audit/`](penguins-eggs-audit/) | penguins-eggs-audit | TypeScript + Shell | Security audit + SBOM framework (39 projects, 8 domains) |
 | [`eggs-gui/`](eggs-gui/) | eggs-gui | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web |
 | [`eggs-ai/`](eggs-ai/) | eggs-ai | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API |
-| [`penguins-distrobuilder/`](penguins-distrobuilder/) | penguins-distrobuilder | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) |
-| [`penguins-incus-platform/`](penguins-incus-platform/) | penguins-incus-platform | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 |
-| [`penguins-incus-hub/`](penguins-incus-hub/) | penguins-incus-hub | Shell | Integration layer for penguins-incus-platform (PIP): embeds PIP daemon + CLI into ISOs; snapshots Incus guests on reset |
+| [`penguins-incus-platform/`](penguins-incus-platform/) | penguins-incus-platform | Python, Rust, Go, TypeScript, Elixir, C++/QML | Unified Incus platform: daemon + CLI + web UI + QML desktop, OCI image builder, distrobuilder, simplestreams server, eggs/recovery hooks |
 
 Each tool with lifecycle hooks registers an **eggs plugin** and (where applicable) a **recovery plugin**:
 
@@ -44,9 +42,8 @@ Each tool with lifecycle hooks registers an **eggs plugin** and (where applicabl
 | PKM | `/etc/penguins-kernel-manager/hooks.conf` | `post_install_notify`, `post_remove_old_sync` |
 | penguins-eggs-audit | built-in plugin hooks | SBOM generation, license scan, attestation |
 | eggs-ai | `~/.eggs-ai.yaml` | `default_provider`, custom LLM endpoints |
-| penguins-distrobuilder | `/etc/penguins-distrobuilder/eggs-hooks.conf` | `DISTROBUILDER_ENABLED`, `DISTROBUILDER_TEMPLATE`, `DISTROBUILDER_TYPE` |
-| penguins-incus-platform | `/etc/penguins-distrobuilder/eggs-hooks.conf` | `INCUS_SERVER_URL`, `INCUS_SERVER_TOKEN`, `INCUS_SERVER_PRODUCT` |
-| penguins-incus-hub | `/etc/penguins-incus-hub/eggs-hooks.conf` | `EMBED_DAEMON`, `EMBED_CLI`, `PRE_RESET_SNAPSHOT`, `POST_HARD_RESET_RESTART` |
+| penguins-incus-platform (PIP daemon/CLI) | `/etc/penguins-incus-hub/eggs-hooks.conf` | `EMBED_DAEMON`, `EMBED_CLI`, `PRE_RESET_SNAPSHOT`, `POST_HARD_RESET_RESTART` |
+| penguins-incus-platform (distrobuilder) | `/etc/penguins-distrobuilder/eggs-hooks.conf` | `DISTROBUILDER_ENABLED`, `DISTROBUILDER_TEMPLATE`, `DISTROBUILDER_TYPE` |
 
 ---
 
@@ -95,9 +92,7 @@ integrations/
 ├── penguins-immutable-framework/  # ecosystem tool (subtree)
 ├── penguins-kernel-manager/       # ecosystem tool (subtree)
 ├── penguins-eggs-audit/           # ecosystem tool (subtree)
-├── penguins-distrobuilder/        # ecosystem tool (subtree: distrobuilder/ + menu/)
-├── penguins-incus-platform/            # ecosystem tool (subtree: simplestreams server + manifests)
-├── penguins-incus-hub/            # ecosystem tool (PIP integration layer)
+├── penguins-incus-platform/       # ecosystem tool (subtree: daemon, CLI, OCI builder, distrobuilder, image server, hooks)
 │
 ├── eggs-ai/                       # eggs AI assistant (subtree)
 ├── eggs-gui/                      # eggs unified GUI (subtree)

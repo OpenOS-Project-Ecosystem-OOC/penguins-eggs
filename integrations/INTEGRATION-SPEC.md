@@ -487,13 +487,25 @@ eggs wardrobe import https://gist.example.com/abc123
 
 ## Phase 7: Incus Guest Management
 
-### 7.1 penguins-incus-hub
+### 7.1 penguins-incus-platform
 
-**What:** Embed the [penguins-incus-platform](https://gitlab.com/OSPF1896/penguins-incus-platform)
-(PIP) daemon and CLI into produced ISOs so that any penguins-eggs live system
-can manage Incus containers and VMs out of the box.
+**What:** Unified Incus platform — container and VM management, OCI image
+building, LXC/Incus rootfs image building, simplestreams image serving, and
+penguins-eggs/recovery integration hooks.
 
-**Dependencies:** penguins-incus-platform (daemon + CLI installed on the build host), Incus ≥ 6.0
+**Repository:** [penguins-incus-platform](https://gitlab.com/openos-project/penguins-eggs_deving/penguins-incus-platform)
+(merged from `incus-oci-builder`, `penguins-distrobuilder`, `penguins-incus-hub`)
+
+**Dependencies:** Incus ≥ 6.0 on the build host
+
+---
+
+#### 7.1.1 eggs-plugin: pip-hook.sh
+
+Embeds the PIP daemon and CLI into produced ISOs so that any penguins-eggs
+live system can manage Incus containers and VMs out of the box.
+
+**Trigger:** `eggs produce` (post-produce hook via `integration/eggs-plugin/pip-hook.sh`)
 
 **Interface:**
 ```bash
@@ -505,8 +517,6 @@ EMBED_PROFILES=1
 PRE_RESET_SNAPSHOT=1
 POST_HARD_RESET_RESTART=1
 ```
-
-**Trigger:** `eggs produce` (post-produce hook via `pip-hook.sh`)
 
 **What gets embedded:**
 
@@ -526,12 +536,55 @@ POST_HARD_RESET_RESTART=1
 | macOS KVM VMs | `penguins-incus provision macos create <name>` |
 | Windows VMs | `penguins-incus provision windows create <name>` |
 
+---
+
+#### 7.1.2 eggs-plugin: distrobuilder-hook.sh
+
+Optionally builds a distrobuilder LXC/Incus image of the produced system
+alongside the ISO, for container distribution.
+
+**Trigger:** `eggs produce` (post-produce hook via `integration/eggs-plugin/distrobuilder-hook.sh`)
+
+**Interface:**
+```bash
+# /etc/penguins-distrobuilder/eggs-hooks.conf
+DISTROBUILDER_ENABLED=0   # set to 1 to activate
+DISTROBUILDER_TYPE=incus  # incus | lxc | both
+DISTROBUILDER_OUTPUT=/var/lib/eggs/distrobuilder
+DISTROBUILDER_TEMPLATE=   # auto-detected if empty
+```
+
+---
+
+#### 7.1.3 recovery-plugin: pip-recovery-plugin.sh
+
+**Trigger:** pre-reset (any mode) and post-hard-reset via penguins-recovery
+
+| Phase | Action |
+|---|---|
+| pre-reset | Snapshots all running Incus instances via `penguins-incus snapshot create` |
+| post-hard-reset | Restarts `penguins-incus-daemon`; re-applies default Incus profiles |
+
+---
+
+#### 7.1.4 recovery-plugin: distrobuilder-recovery-hook.sh
+
+**Trigger:** pre-reset via penguins-recovery
+
+| Phase | Action |
+|---|---|
+| pre-reset | Snapshots current rootfs via `distrobuilder pack-incus` (or `pack-lxc`) |
+
+---
+
 **Acceptance:**
 - [ ] `eggs produce` on a host with PIP installed produces an ISO where `penguins-incus-daemon` starts automatically
 - [ ] `penguins-incus container list` works inside the live ISO without additional setup
+- [ ] `eggs produce` with `DISTROBUILDER_ENABLED=1` produces a valid LXC/Incus image alongside the ISO
 - [ ] Pre-reset hook creates an Incus snapshot for each running container and VM
 - [ ] Post-hard-reset hook restarts the daemon and re-applies default profiles
-- [ ] Hook is a no-op when PIP is not installed on the build host
+- [ ] Pre-reset distrobuilder hook produces a restorable rootfs snapshot
+- [ ] All hooks are no-ops when their respective tools are not installed on the build host
 
 ---
 
@@ -545,6 +598,7 @@ POST_HARD_RESET_RESTART=1
 | 4 | — | system-transparency, BtrFsGit (BTRFS only) |
 | 5 | GitHub account | gitstream, frogbot, workflow-ts |
 | 6 | Docker (for hosting) | gogs, opengist, giftless |
+| 7 | Incus ≥ 6.0 | distrobuilder (for LXC/Incus image builds alongside ISO) |
 
 ## Risk Assessment
 

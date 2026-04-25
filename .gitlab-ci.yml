@@ -158,4 +158,4 @@ secret-scan:
       git log --all -p | grep -E "glpat-[A-Za-z0-9_-]{20,}" && echo "LEAKED TOKEN DETECTED" && exit 1 || echo "No leaked tokens found."
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH =~ /^(main|master)$/'
+    - if: '$CI_COMMIT_BRANCH =~ /^(main|master|all-features)$/'

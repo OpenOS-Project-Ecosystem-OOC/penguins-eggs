@@ -9,6 +9,7 @@
 import { Box, render, Text } from 'ink'
 import React from 'react'
 
+import CpuInfo from '../../classes/cpu-info.js'
 import Pacman from '../../classes/pacman.js'
 import Settings from '../../classes/settings.js'
 import Utils from '../../classes/utils.js'
@@ -65,6 +66,7 @@ export default async function information(verbose = false): Promise<void> {
         </Box>
     )
 
+    const cpuInfo = CpuInfo.collect()
     const configurations = Pacman.configurationCheck()
     const uefi = Pacman.isUefi()
 
@@ -129,6 +131,36 @@ export default async function information(verbose = false): Promise<void> {
         </Box>
     )
 
+    const Cpu = () => (
+        <Box borderStyle="round" flexDirection="row" marginRight={2}>
+            {cpuInfo.x86Level > 0 && (
+                <Box marginRight={2}>
+                    <Text>x86-64: <Text color="cyan">v{cpuInfo.x86Level}</Text></Text>
+                </Box>
+            )}
+            {cpuInfo.processorName !== '' && (
+                <Box marginRight={2}>
+                    <Text>cpu: <Text color="cyan">{cpuInfo.processorName}</Text></Text>
+                </Box>
+            )}
+            {cpuInfo.microarchitecture !== '' && (
+                <Box marginRight={2}>
+                    <Text>uarch: <Text color="cyan">{cpuInfo.microarchitecture}</Text></Text>
+                </Box>
+            )}
+            {cpuInfo.cores > 0 && (
+                <Box marginRight={2}>
+                    <Text>cores: <Text color="cyan">{cpuInfo.cores}</Text></Text>
+                </Box>
+            )}
+            {!cpuInfo.cpuinfoAvailable && cpuInfo.x86Level === 0 && (
+                <Box marginRight={2}>
+                    <Text color="cyan">{process.arch}</Text>
+                </Box>
+            )}
+        </Box>
+    )
+
     const Presentation = () => (
         <>
             <Box ><Text> </Text></Box>
@@ -164,6 +196,7 @@ export default async function information(verbose = false): Promise<void> {
                 <Distro />
                 <RunningOn />
             </Box>
+            <Cpu />
             <Presentation />
         </>
     )

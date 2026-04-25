@@ -19,19 +19,17 @@ Full companion repos merged as subtrees with hooks into `eggs produce`.
 | penguins-eggs-audit | [`penguins-eggs-audit/`](penguins-eggs-audit/) | TypeScript + Shell | Security audit + SBOM: vouch, syft, grant, OS hardening (39 projects, 8 domains) |
 | eggs-gui | [`eggs-gui/`](eggs-gui/) | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web |
 | eggs-ai | [`eggs-ai/`](eggs-ai/) | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API, 7 LLM providers |
-| penguins-distrobuilder | [`penguins-distrobuilder/`](penguins-distrobuilder/) | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) |
-| penguins-incus-platform | [`penguins-incus-platform/`](penguins-incus-platform/) | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 |
-| penguins-incus-hub | [`penguins-incus-hub/`](penguins-incus-hub/) | Shell | Integration layer for penguins-incus-platform: embeds PIP daemon + CLI into ISOs; snapshots Incus guests on reset |
+| penguins-incus-platform | [`penguins-incus-platform/`](penguins-incus-platform/) | Python, Rust, Go, TypeScript, Elixir, C++/QML | Unified Incus platform: daemon + CLI + web UI + QML desktop, OCI image builder (Rust), distrobuilder + TUI (Go + Python), simplestreams image server (Elixir), eggs/recovery hooks |
 
 ### Ecosystem hook events
 
-| Event | penguins-recovery | penguins-powerwash | PIF | PKM | eggs-audit | penguins-distrobuilder | penguins-incus-platform | penguins-incus-hub |
-|---|---|---|---|---|---|---|---|---|
-| `eggs produce` | embeds eggs-plugin hook | embeds binary + GRUB entry | embeds PIF state | embeds kernel list | generates SBOM + attestation | optionally builds LXC/Incus image | optionally publishes image via `--publish-incus` | embeds PIP daemon + CLI + profiles + systemd unit |
-| pre-reset | creates snapshot | calls `eggs produce --naked` | exits mutable mode | snapshots kernel state | — | snapshots rootfs via `distrobuilder pack` | — | snapshots all running Incus containers + VMs |
-| post-reset | — | re-layers recovery tools | re-initialises backend | reinstalls held kernel | — | — | — | restarts PIP daemon; re-applies default profiles (hard/sysprep only) |
-| kernel change | — | — | — | notifies eggs via `eggs kernel-changed` | — | — | — | — |
-| immutable upgrade | creates snapshot | — | notifies eggs via `eggs pif-upgraded` | — | — | — | — | — |
+| Event | penguins-recovery | penguins-powerwash | PIF | PKM | eggs-audit | penguins-incus-platform |
+|---|---|---|---|---|---|---|
+| `eggs produce` | embeds eggs-plugin hook | embeds binary + GRUB entry | embeds PIF state | embeds kernel list | generates SBOM + attestation | embeds PIP daemon + CLI + profiles + systemd unit; optionally builds LXC/Incus image via distrobuilder |
+| pre-reset | creates snapshot | calls `eggs produce --naked` | exits mutable mode | snapshots kernel state | — | snapshots all running Incus containers + VMs; snapshots rootfs via `distrobuilder pack` |
+| post-reset | — | re-layers recovery tools | re-initialises backend | reinstalls held kernel | — | restarts PIP daemon; re-applies default profiles (hard/sysprep only) |
+| kernel change | — | — | — | notifies eggs via `eggs kernel-changed` | — | — |
+| immutable upgrade | creates snapshot | — | notifies eggs via `eggs pif-upgraded` | — | — | — |
 
 ---
 

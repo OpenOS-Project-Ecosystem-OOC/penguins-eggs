@@ -18,8 +18,7 @@ Seven full companion repositories merged into `integrations/` (and some also at 
 | penguins-eggs-audit | TypeScript + Shell | Security audit + SBOM framework: vouch, syft, grant, OS hardening (39 projects, 8 domains) | https://gitlab.com/OSPF1896/penguins-eggs-audit |
 | eggs-gui | Go + TypeScript + Python | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web | https://gitlab.com/OSPF1896/eggs-gui |
 | eggs-ai | TypeScript | AI assistant: diagnostics, build guidance, MCP server, HTTP API, 7 LLM providers | https://gitlab.com/OSPF1896/eggs-ai |
-| penguins-distrobuilder | Go + Python | Unified distrobuilder: lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) | https://gitlab.com/OSPF1896/penguins-distrobuilder |
-| penguins-incus-platform | Elixir + Shell + TypeScript | Simplestreams image server for LXC/LXD/Incus; multi-distro manifests; ChromiumOS stage3 builder | https://gitlab.com/OSPF1896/penguins-incus-platform |
+| penguins-incus-platform | Python, Rust, Go, TypeScript, Elixir, C++/QML | Unified Incus platform: daemon + CLI + web UI + QML desktop, OCI image builder (Rust), distrobuilder + TUI (Go + Python), simplestreams image server (Elixir), eggs/recovery hooks | https://gitlab.com/openos-project/penguins-eggs_deving/penguins-incus-platform |
 
 ---
 
@@ -90,5 +89,4 @@ Seven full companion repositories merged into `integrations/` (and some also at 
 
 | Project | Description | Language | URL |
 |---|---|---|---|
-| penguins-incus-platform | Unified Incus container and VM management — Qt6/QML desktop UI, React web UI, CLI; provisioning plugins for generic Linux, Waydroid, macOS KVM, and Windows VMs | Python, TypeScript, C++/QML | https://gitlab.com/OSPF1896/penguins-incus-platform |
-| penguins-incus-hub | Integration layer connecting penguins-incus-platform with penguins-eggs: eggs plugin + recovery plugin | Shell | (this repo, `integrations/penguins-incus-hub/`) |
+| penguins-incus-platform | Unified Incus platform: container and VM management (daemon, CLI, web UI, QML desktop), OCI image builder, distrobuilder + TUI, simplestreams image server, eggs/recovery hooks | Python, Rust, Go, TypeScript, Elixir, C++/QML | https://gitlab.com/openos-project/penguins-eggs_deving/penguins-incus-platform |

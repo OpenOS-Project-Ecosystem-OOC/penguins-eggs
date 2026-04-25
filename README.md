@@ -359,9 +359,7 @@ Full companion repositories integrated as subtrees with hooks into `eggs produce
 | [penguins-eggs-audit](integrations/penguins-eggs-audit/) | Security audit + SBOM: vouch, syft, grant, OS hardening |
 | [eggs-gui](integrations/eggs-gui/) | Unified GUI: Go daemon + BubbleTea TUI + NodeGUI desktop + NiceGUI web |
 | [eggs-ai](integrations/eggs-ai/) | AI assistant: diagnostics, build guidance, MCP server, HTTP API |
-| [penguins-distrobuilder](integrations/penguins-distrobuilder/) | lxc/distrobuilder (Go) + distrobuilder-menu (Python TUI) |
-| [penguins-incus-platform](integrations/penguins-incus-platform/) | Simplestreams image server for LXC/LXD/Incus |
-| [penguins-incus-hub](integrations/penguins-incus-hub/) | Embeds PIP daemon + CLI into ISOs; snapshots Incus guests on reset |
+| [penguins-incus-platform](integrations/penguins-incus-platform/) | Unified Incus platform: daemon + CLI + web UI + QML desktop, OCI image builder, distrobuilder + TUI, simplestreams image server, eggs/recovery hooks |
 
 See [integrations/INTEGRATIONS.md](integrations/INTEGRATIONS.md) for the full
 hook matrix (pre-build, post-build, pre-reset, post-reset events).

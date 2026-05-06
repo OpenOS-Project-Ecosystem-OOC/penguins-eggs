@@ -28,10 +28,14 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       - name: Lint YAML
         run: pnpm run lint:yaml
       - name: Build
         run: pnpm run build
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
   build-matrix:
     name: Build on ${{ matrix.os }} / Node ${{ matrix.node }}
     runs-on: ${{ matrix.os }}
@@ -54,5 +58,9 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       - name: Build
         run: pnpm run build
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}

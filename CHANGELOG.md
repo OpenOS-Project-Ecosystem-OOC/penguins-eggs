@@ -20,6 +20,12 @@ It took years of work to create the penguins-eggs, and I also incurred expenses 
 # CHANGELOG
 The version is based on the year, month, day, and release number. They are listed in reverse order, with the first being the most recent.
 
+# v26.5.12 Where are you?
+- Updated all Node.js packages to their latest versions (and magically, nothing broke!).
+- Swapped out `show.qml` for a newer, shinier, and all-around better version.
+
+If you are wondering where I've been hiding: I am currently neck-deep in the development of [oa-tools](https://github.com/pieroproietti/oa-tools), the spiritual successor to penguins-eggs.
+
 # v26.3.21 🌸 Nowruz edition!
 
 ## Added & Changed

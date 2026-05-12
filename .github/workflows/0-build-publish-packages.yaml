@@ -52,7 +52,6 @@ jobs:
       
       - name: 6. Build The Package as Non-Root User
         run: |
-          sudo -u builder pnpm config set only-allow-defined-builds false
           sudo -u builder abuild checksum
           sudo -u builder abuild -r
         working-directory: ./packaging/alpine
@@ -109,7 +108,6 @@ jobs:
       
       - name: 5. Update Checksums and Build Package
         run: |
-          sudo -u builder bash -c "pnpm config set only-allow-defined-builds false"
           sudo -u builder GPGKEY=${{ secrets.GPG_KEY_ID }} bash -c "cd ./packaging/arch && updpkgsums && makepkg -s -f --noconfirm"
       
       - name: 6. Upload Arch Package Artifact
@@ -153,7 +151,6 @@ jobs:
       - name: 4. Build .deb packages for all architectures
         run: |
           export GPG_TTY=$(tty)
-          pnpm config set only-allow-defined-builds false
           pnpm install
           pnpm deb -a
       - name: 5. Upload Debian Package Artifact
@@ -228,7 +225,6 @@ jobs:
       - name: 8. Build and Sign RPM package
         id: build
         run: |
-          pnpm config set only-allow-defined-builds false
           mkdir -p ~/.gnupg
           echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" > ~/.gnupg/gpg-agent.conf
@@ -295,7 +291,6 @@ jobs:
         env:
           GPG_PASSPHRASE_ENV: ${{ secrets.GPG_PASSPHRASE }}
         run: |
-          pnpm config set only-allow-defined-builds false
           mkdir -p ~/.gnupg
           echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" > ~/.gnupg/gpg-agent.conf
@@ -363,7 +358,6 @@ jobs:
       
       - name: 6. Update Checksums and Build Package as Non-Root User
         run: |
-          sudo -u builder bash -c "pnpm config set only-allow-defined-builds false"
           sudo -u builder GPGKEY=${{ secrets.GPG_KEY_ID }} updpkgsums
           sudo -u builder GPGKEY=${{ secrets.GPG_KEY_ID }} makepkg -s -f --noconfirm
         working-directory: ./packaging/manjaro
@@ -447,7 +441,6 @@ jobs:
         id: build
         run: |
           export GPG_TTY=$(tty)
-          pnpm config set only-allow-defined-builds false
           echo '%_topdir %(echo $HOME)/rpmbuild' >> ~/.rpmmacros
           mkdir -p ~/.gnupg
           echo "pinentry-mode loopback" > ~/.gnupg/gpg.conf

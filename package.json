@@ -128,5 +128,10 @@
         "version": "oclif readme && git add README.md",
         "webui": "sudo ./WebUI/venv/bin/python3 ./WebUI/backend.py"
     },
-    "types": "dist/index.d.ts"
+    "types": "dist/index.d.ts",
+    "pnpm": {
+    "onlyBuiltDependencies": [
+      "unrs-resolver"
+    ]
+  }
 }

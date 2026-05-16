@@ -521,6 +521,8 @@ export default class Produce extends Command {
   }
 
   async run(): Promise<void> {
+    const projectRoot = this.config.root;
+
     Utils.titles(this.id + ' ' + this.argv)
 
     const { flags } = await this.parse(Produce)
@@ -604,11 +606,11 @@ export default class Produce extends Command {
         basename = flags.basename
       }
 
-      let dtbDir = ''
-      if (flags.dtbdir !== undefined) {
-        dtbDir = flags.dtbdir
-        if (dtbDir !== 'none' && !fs.existsSync(dtbDir)) {
-          Utils.warning('dtbDir: ' + chalk.white(dtbDir) + ' not found!')
+      let fdtDir = ''
+      if (flags.fdt !== undefined) {
+        fdtDir = flags.fdt
+        if (fdtDir !== 'none' && !fs.existsSync(fdtDir)) {
+          Utils.warning('fdt: ' + chalk.white(fdtDir) + ' not found!')
           process.exit()
         }
       }

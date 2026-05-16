@@ -134,6 +134,13 @@ export default class Ovary {
   verbose = false
   vmlinuz = ''
   volid = ''
-  dtbDir = ''
+  fdtDir = ''
+  fdtFile = ''
   xorrisoCommand = xorrisoCommand
+  projectRoot = ''
+
+  constructor(projectRoot: string) {
+    this.projectRoot = projectRoot
+
+  }
 }

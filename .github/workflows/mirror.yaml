@@ -13,7 +13,7 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write  # Changed from read to write
     steps:
       - name: Checkout full history (detached HEAD)
         uses: actions/checkout@v4

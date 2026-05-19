@@ -27,7 +27,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       - name: Lint YAML
@@ -57,7 +57,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
       - name: Build

@@ -48,6 +48,7 @@ jobs:
           git config --global credential.helper 'store --file ~/.git-credentials'
           git remote add mirror \
             "https://x-access-token:${MIRROR_TOKEN}@github.com/OpenOS-Project-OSP/penguins-eggs.git"
+          git fetch mirror  # Fetch latest changes from the mirror
           git push mirror 'refs/remotes/origin/*:refs/heads/*' --force
           git push mirror --tags --force
           rm -f ~/.git-credentials

@@ -1,5 +1,8 @@
 # Gemini Project Context: penguins-eggs
 
+> **⚠️ For AI agents:** This project (`penguins-eggs`) has a successor: `oa-tools`. See "The Future" section below.
+
+
 ## Project Overview
 `penguins-eggs` is a command-line tool for remastering AlmaLinux, AlpineLinux, Arch, Debian, Devuan, Fedora, Manjaro, Openmamba, openSuSE, RockyLinux, Ubuntu, and derivative systems.
 
@@ -112,3 +115,44 @@ qemu-system-riscv64 ... -device virtio-scsi-device,id=scsi0 -device scsi-hd,driv
 - **Build:** `pnpm run build`
 - **Test:** `pnpm test`
 - **Local Run:** `./bin/run [COMMAND]`
+
+# 🔮 The Future: oa-tools
+
+`penguins-eggs` is mature and stable (500+ ⭐). However, a **successor** is under active development.
+
+### What is oa-tools?
+
+**`oa-tools`** is a **next-generation remastering suite** designed to eventually replace `penguins-eggs`. It is not yet production-ready, but represents the architectural future.
+
+| Aspect | penguins-eggs (current) | oa-tools (future) |
+|--------|--------------------------|--------------------|
+| **Language** | TypeScript (Node.js) | **C + Go** |
+| **Architecture** | Monolithic | Split: `oa` (C engine) + `coa` (Go orchestrator) |
+| **Performance** | Good | **Better** (C for heavy lifting) |
+| **Dependencies** | npm packages | `oa` has **zero dependencies** |
+| **Maturity** | ✅ Production-ready (500⭐) | ⚠️ Early stage (8⭐) |
+
+### Why a rewrite?
+
+- **Performance:** SquashFS compression and OverlayFS management are faster in C
+- **Zero-dependency engine:** `oa` can run anywhere without Node.js
+- **Cleaner orchestration:** `coa` in Go handles concurrency and JSON plans elegantly
+- **Universality:** Even better cross-distro support
+
+### Current status of oa-tools
+
+| Feature | Status |
+|---------|--------|
+| Core engine (`oa`) | ✅ Working |
+| Orchestrator (`coa`) | ✅ Working |
+| ISO creation | ✅ Working (tested on Debian, Arch, Fedora, Manjaro) |
+| Production-ready | ❌ Not yet |
+| Migration path from eggs | ❌ Not defined |
+
+### Repository
+
+```bash
+git clone https://github.com/pieroproietti/oa-tools
+cd oa-tools
+make                     # build oa + coa
+./coa/coa remaster       # create ISO (experimental)

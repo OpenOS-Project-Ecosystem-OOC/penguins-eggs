@@ -108,8 +108,8 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 <!-- AI:start:contributors -->
 [@monstermunchkin](https://github.com/monstermunchkin) - 818 commits  
 [@stgraber](https://github.com/stgraber) - 785 commits  
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896) - 230 commits  
 [@itoffshore](https://github.com/itoffshore) - 155 commits  
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896) - 103 commits  
 [@pieroproietti](https://github.com/pieroproietti) - 56 commits  
 [@ona-agent](https://github.com/ona-agent) - 50 commits  
 [@simondeziel](https://github.com/simondeziel) - 32 commits  
@@ -137,7 +137,7 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 [@timbretimber](https://github.com/timbretimber) - 3 commits  
 [@foxtrotcz](https://github.com/foxtrotcz) - 3 commits  
 
-This repository is a mirror. For the upstream source, visit [Interested-Deving-1896/penguins-eggs](https://github.com/Interested-Deving-1896/penguins-eggs).
+*Note: This repository may be a mirror. Please check the upstream source for additional context.*
 <!-- AI:end:contributors -->
 
 ## Origins
